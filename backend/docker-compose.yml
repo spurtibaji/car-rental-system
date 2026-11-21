@@ -1,0 +1,55 @@
+version: '3.8'
+
+services:
+  db:
+    image: mysql:8.0
+    container_name: drivenow_mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: car_rental
+      MYSQL_USER: drivenow_user
+      MYSQL_PASSWORD: drivenow_pass
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: drivenow_backend
+    restart: always
+    ports:
+      - "8000:8000"
+    environment:
+      PROJECT_NAME: "DriveNow Car Rental API"
+      ENVIRONMENT: "production"
+      DEBUG: "False"
+      API_V1_STR: "/api/v1"
+      DATABASE_URL: "mysql+pymysql://drivenow_user:drivenow_pass@db:3306/car_rental"
+      JWT_SECRET: "drivenow_production_super_secret_jwt_key_2026"
+      JWT_ALGORITHM: "HS256"
+      ACCESS_TOKEN_EXPIRE_MINUTES: "60"
+      REFRESH_TOKEN_EXPIRE_DAYS: "30"
+      CORS_ORIGINS: "http://localhost:8443,http://localhost:5173,http://127.0.0.1:8443"
+      UPLOAD_DIR: "/app/uploads"
+    volumes:
+      - kyc_uploads:/app/uploads
+    depends_on:
+      db:
+        condition: service_healthy
+    command: >
+      sh -c "alembic upgrade head &&
+             python scripts/seed.py &&
+             uvicorn app.main:app --host 0.0.0.0 --port 8000"
+
+volumes:
+  mysql_data:
+  kyc_uploads:
