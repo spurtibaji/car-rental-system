@@ -1,6 +1,6 @@
 import json
 from decimal import Decimal
-from typing import Any, Dict, Optional, Tuple
+from typing import Any, Dict, List, Optional, Tuple
 from sqlalchemy.orm import Session
 from sqlalchemy import desc
 from app.models.audit_log import AuditLog
