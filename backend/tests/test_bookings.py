@@ -99,6 +99,7 @@ def test_booking_creation_success(client: TestClient, customer_headers: dict):
     assert data["status"] == "confirmed"
     assert data["pickupLocation"] == "Mumbai Airport, T2"
     assert data["dropLocation"] == "Bandra, Mumbai"
+    assert data["durationType"] == "daily"
 
 
 def test_booking_double_booking_conflict(client: TestClient, customer_headers: dict):

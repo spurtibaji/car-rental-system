@@ -623,6 +623,7 @@ def seed_database():
                 return_date=datetime.strptime(b["return_date"], "%Y-%m-%d").date(),
                 pickup_time=b["pickup_time"],
                 return_time="10:00",
+                duration_type=b.get("duration_type", "daily"),
                 duration_value=b["duration_value"],
                 with_driver=b["with_driver"],
                 driver_fee=Decimal("800.00") if b["with_driver"] else Decimal("0.00"),

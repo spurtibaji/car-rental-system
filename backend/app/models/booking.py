@@ -47,6 +47,7 @@ class Booking(Base):
     return_date = Column(Date, nullable=False, index=True)
     pickup_time = Column(String(10), default="10:00", nullable=False)
     return_time = Column(String(10), default="10:00", nullable=False)
+    duration_type = Column(String(20), default="daily", nullable=False)
     duration_value = Column(Integer, nullable=False)
     with_driver = Column(Boolean, default=False, nullable=False)
     driver_fee = Column(Numeric(10, 2), default=0.0, nullable=False)
