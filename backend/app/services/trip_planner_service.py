@@ -1,5 +1,5 @@
 from decimal import Decimal
-from typing import Dict, List, Optional
+from typing import Dict, List, Optional, Tuple
 from sqlalchemy.orm import Session
 from app.models.car import Car
 from app.repositories.car_repo import CarRepository

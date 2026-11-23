@@ -7,7 +7,7 @@ from app.core.config import settings, BASE_DIR
 from app.core.logging import logger, setup_logging
 from app.core.exceptions import AppException
 from app.db.base import Base
-from app.db.session import engine
+from app.db.session import engine, ensure_booking_duration_columns
 from app.api.v1.api import api_router
 from app.middleware.error_handler import (
     app_exception_handler,
@@ -25,6 +25,7 @@ async def lifespan(app: FastAPI):
     try:
         import app.models  # Ensure all models are registered
         Base.metadata.create_all(bind=engine)
+        ensure_booking_duration_columns()
         logger.info("Database schema initialized successfully.")
     except Exception as e:
         logger.error(f"Error initializing database schema: {e}")
