@@ -1,0 +1,43 @@
+# Environment variables
+.env
+.env.local
+.env.*.local
+backend/.env
+Frontend/.env
+!.env.example
+!backend/.env.example
+!Frontend/.env.example
+
+# Node / Frontend
+node_modules/
+Frontend/node_modules/
+Frontend/dist/
+dist/
+.vite/
+Frontend/.vite/
+
+# Python / Backend
+__pycache__/
+*.py[cod]
+*$py.class
+backend/venv/
+venv/
+.venv/
+backend/.pytest_cache/
+.pytest_cache/
+
+# Databases
+*.db
+*.sqlite
+*.sqlite3
+backend/car_rental_dev.db
+
+# Uploads & Media
+backend/uploads/
+uploads/
+
+# OS & Editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
