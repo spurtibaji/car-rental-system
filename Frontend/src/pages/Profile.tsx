@@ -133,7 +133,7 @@ export default function Profile() {
           <p className="text-xs text-muted-foreground mb-5">Please sign in to access your profile and documents.</p>
           <Link
             to="/login"
-            className="block w-full py-2.5 bg-primary text-white text-xs font-semibold rounded-xl hover:bg-primary/90 transition-colors text-center"
+            className="block w-full py-2.5 bg-primary text-white text-xs font-bold rounded-xl hover:bg-primary/90 transition-colors text-center"
           >
             Sign In to Your Account
           </Link>
@@ -395,28 +395,28 @@ export default function Profile() {
   const kycStatusBadge = (status: string) => {
     switch (status) {
       case 'verified':
-        return <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">Verified ✓</span>;
+        return <span className="px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-50 text-emerald-700 border border-emerald-200">Verified ✓</span>;
       case 'pending':
-        return <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-amber-500/10 text-amber-400 border border-amber-500/30">Pending Review ⏳</span>;
+        return <span className="px-2.5 py-1 rounded-full text-xs font-bold bg-amber-50 text-amber-700 border border-amber-200">Pending Review ⏳</span>;
       case 'rejected':
-        return <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-red-500/10 text-red-400 border border-red-500/30">Rejected ✕</span>;
+        return <span className="px-2.5 py-1 rounded-full text-xs font-bold bg-red-50 text-red-600 border border-red-200">Rejected ✕</span>;
       default:
-        return <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-muted text-muted-foreground border border-border">Not Submitted</span>;
+        return <span className="px-2.5 py-1 rounded-full text-xs font-bold bg-muted text-muted-foreground border border-border">Not Submitted</span>;
     }
   };
 
   const bookingStatusBadge = (status: string) => {
     switch (status) {
       case 'active':
-        return <span className="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-blue-500/10 text-blue-400 border border-blue-500/30">Active Trip</span>;
+        return <span className="px-2.5 py-0.5 rounded-full text-xs font-bold bg-blue-50 text-blue-700 border border-blue-200">Active Trip</span>;
       case 'confirmed':
-        return <span className="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">Confirmed</span>;
+        return <span className="px-2.5 py-0.5 rounded-full text-xs font-bold bg-emerald-50 text-emerald-700 border border-emerald-200">Confirmed</span>;
       case 'completed':
-        return <span className="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-purple-500/10 text-purple-400 border border-purple-500/30">Completed</span>;
+        return <span className="px-2.5 py-0.5 rounded-full text-xs font-bold bg-purple-50 text-purple-700 border border-purple-200">Completed</span>;
       case 'cancelled':
-        return <span className="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-red-500/10 text-red-400 border border-red-500/30">Cancelled</span>;
+        return <span className="px-2.5 py-0.5 rounded-full text-xs font-bold bg-red-50 text-red-600 border border-red-200">Cancelled</span>;
       default:
-        return <span className="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-muted text-muted-foreground border border-border">{status}</span>;
+        return <span className="px-2.5 py-0.5 rounded-full text-xs font-bold bg-muted text-muted-foreground border border-border">{status}</span>;
     }
   };
 
@@ -433,18 +433,18 @@ export default function Profile() {
               <h1 className="font-display font-black text-2xl text-foreground">{user.name || 'Valued Customer'}</h1>
               {kycStatusBadge(user.kycStatus)}
             </div>
-            <p className="text-sm text-muted-foreground mt-0.5">{user.email} · {user.phone || 'No phone set'}</p>
+            <p className="text-sm font-bold text-muted-foreground mt-0.5">{user.email} · {user.phone || 'No phone set'}</p>
           </div>
         </div>
 
         <div className="flex items-center gap-4 w-full md:w-auto justify-between md:justify-end border-t md:border-t-0 pt-4 md:pt-0 border-border">
           <div className="text-right">
-            <p className="text-xs text-muted-foreground uppercase tracking-wider font-semibold">Wallet Balance</p>
+            <p className="text-xs text-muted-foreground uppercase tracking-wider font-bold">Wallet Balance</p>
             <p className="text-2xl font-display font-black text-primary">₹{Number(user.walletBalance || 0).toLocaleString()}</p>
           </div>
           <button
             onClick={logout}
-            className="px-4 py-2 bg-red-400/10 hover:bg-red-400/20 text-red-400 border border-red-400/30 rounded-xl text-xs font-semibold transition-colors cursor-pointer"
+            className="px-4 py-2 bg-red-50 hover:bg-red-100 text-red-600 border border-red-200 rounded-xl text-xs font-bold transition-colors cursor-pointer"
           >
             Sign Out
           </button>
@@ -455,7 +455,7 @@ export default function Profile() {
       <div className="flex items-center gap-2 border-b border-border pb-4 mb-8 overflow-x-auto">
         <button
           onClick={() => setActiveTab('profile')}
-          className={`px-4 py-2 rounded-xl text-xs font-semibold whitespace-nowrap transition-colors cursor-pointer ${
+          className={`px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap transition-colors cursor-pointer ${
             activeTab === 'profile'
               ? 'bg-primary text-white shadow-sm'
               : 'bg-muted text-muted-foreground hover:text-foreground'
@@ -465,7 +465,7 @@ export default function Profile() {
         </button>
         <button
           onClick={() => setActiveTab('bookings')}
-          className={`px-4 py-2 rounded-xl text-xs font-semibold whitespace-nowrap transition-colors cursor-pointer ${
+          className={`px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap transition-colors cursor-pointer ${
             activeTab === 'bookings'
               ? 'bg-primary text-white shadow-sm'
               : 'bg-muted text-muted-foreground hover:text-foreground'
@@ -475,7 +475,7 @@ export default function Profile() {
         </button>
         <button
           onClick={() => setActiveTab('wallet')}
-          className={`px-4 py-2 rounded-xl text-xs font-semibold whitespace-nowrap transition-colors cursor-pointer ${
+          className={`px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap transition-colors cursor-pointer ${
             activeTab === 'wallet'
               ? 'bg-primary text-white shadow-sm'
               : 'bg-muted text-muted-foreground hover:text-foreground'
@@ -485,7 +485,7 @@ export default function Profile() {
         </button>
         <button
           onClick={() => setActiveTab('kyc')}
-          className={`px-4 py-2 rounded-xl text-xs font-semibold whitespace-nowrap transition-colors cursor-pointer ${
+          className={`px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap transition-colors cursor-pointer ${
             activeTab === 'kyc'
               ? 'bg-primary text-white shadow-sm'
               : 'bg-muted text-muted-foreground hover:text-foreground'
@@ -505,8 +505,8 @@ export default function Profile() {
             <div
               className={`mb-6 p-4 rounded-xl text-xs font-medium ${
                 profileMsg.type === 'success'
-                  ? 'bg-emerald-400/10 text-emerald-400 border border-emerald-400/30'
-                  : 'bg-red-400/10 text-red-400 border border-red-400/30'
+                  ? 'bg-emerald-50 text-emerald-700 border border-emerald-200'
+                  : 'bg-red-50 text-red-600 border border-red-200'
               }`}
             >
               {profileMsg.text}
@@ -516,7 +516,7 @@ export default function Profile() {
           <form onSubmit={handleProfileSave} className="space-y-4">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label className="block text-xs font-semibold text-foreground uppercase tracking-wider mb-1.5">
+                <label className="block text-xs font-bold text-foreground uppercase tracking-wider mb-1.5">
                   Full Name
                 </label>
                 <input
@@ -528,7 +528,7 @@ export default function Profile() {
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-foreground uppercase tracking-wider mb-1.5">
+                <label className="block text-xs font-bold text-foreground uppercase tracking-wider mb-1.5">
                   Email Address
                 </label>
                 <input
@@ -542,7 +542,7 @@ export default function Profile() {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label className="block text-xs font-semibold text-foreground uppercase tracking-wider mb-1.5">
+                <label className="block text-xs font-bold text-foreground uppercase tracking-wider mb-1.5">
                   Phone Number
                 </label>
                 <input
@@ -555,7 +555,7 @@ export default function Profile() {
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-foreground uppercase tracking-wider mb-1.5">
+                <label className="block text-xs font-bold text-foreground uppercase tracking-wider mb-1.5">
                   Date of Birth
                 </label>
                 <input
@@ -568,7 +568,7 @@ export default function Profile() {
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-foreground uppercase tracking-wider mb-1.5">
+              <label className="block text-xs font-bold text-foreground uppercase tracking-wider mb-1.5">
                 Driving Licence Number
               </label>
               <input
@@ -584,7 +584,7 @@ export default function Profile() {
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-foreground uppercase tracking-wider mb-1.5">
+              <label className="block text-xs font-bold text-foreground uppercase tracking-wider mb-1.5">
                 Billing / Residential Address
               </label>
               <textarea
@@ -599,7 +599,7 @@ export default function Profile() {
             <button
               type="submit"
               disabled={savingProfile}
-              className="px-6 py-2.5 bg-primary hover:bg-primary/90 text-white font-display font-semibold text-xs rounded-xl transition-colors disabled:opacity-50 cursor-pointer shadow-md shadow-primary/20"
+              className="px-6 py-2.5 bg-primary hover:bg-primary/90 text-white font-display font-bold text-xs rounded-xl transition-colors disabled:opacity-50 cursor-pointer shadow-md shadow-primary/20"
             >
               {savingProfile ? 'Saving Changes...' : 'Save Profile Details'}
             </button>
@@ -617,7 +617,7 @@ export default function Profile() {
             </div>
             <Link
               to="/cars"
-              className="px-4 py-2 bg-primary text-white text-xs font-semibold rounded-xl hover:bg-primary/90 transition-colors"
+              className="px-4 py-2 bg-primary text-white text-xs font-bold rounded-xl hover:bg-primary/90 transition-colors"
             >
               + Book Another Car
             </Link>
@@ -628,8 +628,8 @@ export default function Profile() {
             <div
               className={`p-3.5 rounded-xl border text-xs font-medium flex items-center justify-between transition-all animate-in fade-in slide-in-from-top-2 ${
                 bookingNotice.type === 'success'
-                  ? 'bg-emerald-500/10 border-emerald-500/25 text-emerald-400'
-                  : 'bg-red-500/10 border-red-500/25 text-red-400'
+                  ? 'bg-emerald-50 border-emerald-200 text-emerald-700'
+                  : 'bg-red-50 border-red-200 text-red-600'
               }`}
             >
               <div className="flex items-center gap-2">
@@ -647,7 +647,7 @@ export default function Profile() {
 
           {/* Review Submission Success Banner */}
           {reviewSuccessMsg && (
-            <div className="p-3.5 rounded-xl border bg-emerald-500/10 border-emerald-500/25 text-emerald-400 text-xs font-medium flex items-center justify-between transition-all animate-in fade-in slide-in-from-top-2">
+            <div className="p-3.5 rounded-xl border bg-emerald-50 border-emerald-200 text-emerald-700 text-xs font-medium flex items-center justify-between transition-all animate-in fade-in slide-in-from-top-2">
               <div className="flex items-center gap-2">
                 <span>⭐</span>
                 <span>{reviewSuccessMsg}</span>
@@ -670,7 +670,7 @@ export default function Profile() {
               </p>
               <Link
                 to="/cars"
-                className="inline-block px-5 py-2.5 bg-primary text-white text-xs font-semibold rounded-xl hover:bg-primary/90 transition-colors"
+                className="inline-block px-5 py-2.5 bg-primary text-white text-xs font-bold rounded-xl hover:bg-primary/90 transition-colors"
               >
                 Browse All Cars
               </Link>
@@ -700,11 +700,11 @@ export default function Profile() {
                           {booking.car?.name || (booking as any).carName || 'DriveNow Vehicle'}
                         </h4>
                         {bookingStatusBadge(booking.status)}
-                        <span className="text-[11px] text-muted-foreground font-mono">
+                        <span className="text-[11px] font-bold text-muted-foreground font-mono">
                           #{booking.id.slice(0, 8)}
                         </span>
                       </div>
-                      <p className="text-xs text-muted-foreground mt-1">
+                      <p className="text-xs font-bold text-muted-foreground mt-1">
                         📍 {booking.pickup_location || (booking as any).pickupLocation || 'Hub pickup'} ➔ {booking.drop_location || (booking as any).dropLocation || 'Same'}
                       </p>
                       <p className="text-[11px] text-muted-foreground mt-0.5">
@@ -716,7 +716,7 @@ export default function Profile() {
 
                   <div className="flex items-center justify-between md:justify-end gap-3 w-full md:w-auto border-t md:border-t-0 pt-3 md:pt-0 border-border">
                     <div className="text-left md:text-right mr-2">
-                      <span className="text-[10px] text-muted-foreground uppercase font-semibold block">Total</span>
+                      <span className="text-[10px] text-muted-foreground uppercase font-bold block">Total</span>
                       <span className="font-display font-black text-foreground text-sm">
                         ₹{Number(booking.total_price || booking.total_amount || (booking as any).amount || 0).toLocaleString()}
                       </span>
@@ -726,7 +726,7 @@ export default function Profile() {
                       {booking.status !== 'cancelled' && (
                         <button
                           onClick={() => handleOpenTrack(booking)}
-                          className="px-3 py-1.5 bg-primary/10 hover:bg-primary/20 text-primary border border-primary/20 rounded-lg text-xs font-semibold transition-colors cursor-pointer"
+                          className="px-3 py-1.5 bg-primary/10 hover:bg-primary/20 text-primary border border-primary/20 rounded-lg text-xs font-bold transition-colors cursor-pointer"
                         >
                           Track
                         </button>
@@ -735,14 +735,14 @@ export default function Profile() {
                       {booking.status === 'completed' && (
                         (booking.review || (booking as any).review) ? (
                           <div className="flex items-center gap-1.5">
-                            <div className="flex items-center gap-1 px-2.5 py-1 bg-amber-500/10 border border-amber-500/30 rounded-lg text-xs">
-                              <span className="text-amber-400 font-bold">
+                            <div className="flex items-center gap-1 px-2.5 py-1 bg-amber-50 border border-amber-200 rounded-lg text-xs">
+                              <span className="text-amber-600 font-bold">
                                 ★ {(booking.review || (booking as any).review).rating}/5
                               </span>
                             </div>
                             <button
                               onClick={() => handleOpenViewReview(booking)}
-                              className="px-2.5 py-1 bg-muted hover:bg-muted/80 text-foreground rounded-lg text-xs font-semibold transition-colors cursor-pointer"
+                              className="px-2.5 py-1 bg-muted hover:bg-muted/80 text-foreground rounded-lg text-xs font-bold transition-colors cursor-pointer"
                               title="View your submitted feedback"
                             >
                               My Review
@@ -751,7 +751,7 @@ export default function Profile() {
                         ) : (
                           <button
                             onClick={() => handleOpenRateModal(booking)}
-                            className="px-3 py-1.5 bg-amber-500 hover:bg-amber-600 text-black font-semibold rounded-lg text-xs transition-colors flex items-center gap-1.5 cursor-pointer shadow-md shadow-amber-500/20"
+                            className="px-3 py-1.5 bg-amber-500 hover:bg-amber-600 text-white font-bold rounded-lg text-xs transition-colors flex items-center gap-1.5 cursor-pointer shadow-md shadow-amber-500/20"
                           >
                             <span>⭐</span>
                             <span>Rate Experience</span>
@@ -762,7 +762,7 @@ export default function Profile() {
                       {booking.status === 'confirmed' && (
                         <button
                           onClick={() => promptCancelBooking(booking)}
-                          className="px-3 py-1.5 bg-red-400/10 hover:bg-red-400/20 text-red-400 border border-red-400/20 rounded-lg text-xs font-semibold transition-colors cursor-pointer"
+                          className="px-3 py-1.5 bg-red-50 hover:bg-red-100 text-red-600 border border-red-200 rounded-lg text-xs font-bold transition-colors cursor-pointer"
                         >
                           Cancel
                         </button>
@@ -771,7 +771,7 @@ export default function Profile() {
                       {booking.status === 'cancelled' && (
                         <button
                           onClick={() => promptDeleteBooking(booking)}
-                          className="px-3 py-1.5 bg-muted hover:bg-muted/80 text-muted-foreground rounded-lg text-xs font-medium transition-colors cursor-pointer"
+                          className="px-3 py-1.5 bg-muted hover:bg-muted/80 text-muted-foreground rounded-lg text-xs font-bold transition-colors cursor-pointer"
                         >
                           Remove
                         </button>
@@ -797,8 +797,8 @@ export default function Profile() {
               <div
                 className={`mb-5 p-3.5 rounded-xl text-xs font-medium ${
                   walletMsg.type === 'success'
-                    ? 'bg-emerald-400/10 text-emerald-400 border border-emerald-400/30'
-                    : 'bg-red-400/10 text-red-400 border border-red-400/30'
+                    ? 'bg-emerald-50 text-emerald-700 border border-emerald-200'
+                    : 'bg-red-50 text-red-600 border border-red-200'
                 }`}
               >
                 {walletMsg.text}
@@ -807,7 +807,7 @@ export default function Profile() {
 
             <form onSubmit={handleWalletSubmit} className="space-y-4">
               <div>
-                <label className="block text-xs font-semibold text-foreground uppercase tracking-wider mb-2">
+                <label className="block text-xs font-bold text-foreground uppercase tracking-wider mb-2">
                   Select Quick Amount
                 </label>
                 <div className="grid grid-cols-3 gap-2">
@@ -832,7 +832,7 @@ export default function Profile() {
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-foreground uppercase tracking-wider mb-1.5">
+                <label className="block text-xs font-bold text-foreground uppercase tracking-wider mb-1.5">
                   Or Custom Amount (₹)
                 </label>
                 <input
@@ -849,7 +849,7 @@ export default function Profile() {
               <button
                 type="submit"
                 disabled={addingMoney}
-                className="w-full py-3 bg-primary hover:bg-primary/90 text-white font-display font-semibold text-xs rounded-xl transition-colors disabled:opacity-50 cursor-pointer shadow-md shadow-primary/20"
+                className="w-full py-3 bg-primary hover:bg-primary/90 text-white font-display font-bold text-xs rounded-xl transition-colors disabled:opacity-50 cursor-pointer shadow-md shadow-primary/20"
               >
                 {addingMoney ? 'Processing Payment...' : `Top-up ₹${customAmount || topUpAmount.toLocaleString()}`}
               </button>
@@ -875,7 +875,7 @@ export default function Profile() {
                     className="flex items-center justify-between p-3 bg-muted/40 rounded-xl border border-border"
                   >
                     <div>
-                      <p className="text-xs font-semibold text-foreground">
+                      <p className="text-xs font-bold text-foreground">
                         {tx.description || (tx.type === 'credit' ? 'Wallet Top-up' : 'Booking Payment')}
                       </p>
                       <p className="text-[10px] text-muted-foreground">
@@ -884,7 +884,7 @@ export default function Profile() {
                     </div>
                     <span
                       className={`font-display font-bold text-xs ${
-                        tx.type === 'credit' ? 'text-emerald-400' : 'text-red-400'
+                        tx.type === 'credit' ? 'text-emerald-600' : 'text-red-600'
                       }`}
                     >
                       {tx.type === 'credit' ? '+' : '-'}₹{Math.abs(tx.amount).toLocaleString()}
@@ -914,8 +914,8 @@ export default function Profile() {
             <div
               className={`mb-6 p-4 rounded-xl text-xs font-medium ${
                 kycMsg.type === 'success'
-                  ? 'bg-emerald-400/10 text-emerald-400 border border-emerald-400/30'
-                  : 'bg-red-400/10 text-red-400 border border-red-400/30'
+                  ? 'bg-emerald-50 text-emerald-700 border border-emerald-200'
+                  : 'bg-red-50 text-red-600 border border-red-200'
               }`}
             >
               {kycMsg.text}
@@ -925,7 +925,7 @@ export default function Profile() {
           <form onSubmit={handleKycSubmit} className="space-y-5">
             {/* Driving Licence Number */}
             <div>
-              <label className="block text-xs font-semibold text-foreground uppercase tracking-wider mb-1.5">
+              <label className="block text-xs font-bold text-foreground uppercase tracking-wider mb-1.5">
                 Driving Licence Number *
               </label>
               <input
@@ -941,7 +941,7 @@ export default function Profile() {
             {/* Document 1: Driving Licence File */}
             <div className="p-4 bg-muted/40 border border-border rounded-xl space-y-2">
               <div className="flex items-center justify-between">
-                <label className="text-xs font-semibold text-foreground uppercase tracking-wider flex items-center gap-1.5">
+                <label className="text-xs font-bold text-foreground uppercase tracking-wider flex items-center gap-1.5">
                   <span>🪪</span>
                   <span>1. Driving Licence Document *</span>
                 </label>
@@ -958,10 +958,10 @@ export default function Profile() {
                 required
                 accept=".jpg,.jpeg,.png,.pdf"
                 onChange={e => setDrivingLicenceFile(e.target.files?.[0] || null)}
-                className="w-full px-3 py-2 bg-background border border-border rounded-xl text-xs text-foreground file:mr-3 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-primary file:text-white hover:file:bg-primary/90 cursor-pointer"
+                className="w-full px-3 py-2 bg-background border border-border rounded-xl text-xs text-foreground file:mr-3 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-bold file:bg-primary file:text-white hover:file:bg-primary/90 cursor-pointer"
               />
               {drivingLicenceFile && (
-                <div className="flex items-center gap-2 text-xs text-emerald-400 font-medium">
+                <div className="flex items-center gap-2 text-xs text-emerald-600 font-bold">
                   <span>✓</span>
                   <span>{drivingLicenceFile.name} ({(drivingLicenceFile.size / 1024).toFixed(0)} KB)</span>
                 </div>
@@ -971,11 +971,11 @@ export default function Profile() {
             {/* Document 2: Aadhaar Card File */}
             <div className="p-4 bg-muted/40 border border-border rounded-xl space-y-2">
               <div className="flex items-center justify-between">
-                <label className="text-xs font-semibold text-foreground uppercase tracking-wider flex items-center gap-1.5">
+                <label className="text-xs font-bold text-foreground uppercase tracking-wider flex items-center gap-1.5">
                   <span>🆔</span>
                   <span>2. Aadhaar Card Document *</span>
                 </label>
-                <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-amber-500/10 text-amber-400">
+                <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-amber-50 text-amber-700 border border-amber-200">
                   Mandatory
                 </span>
               </div>
@@ -988,10 +988,10 @@ export default function Profile() {
                 required
                 accept=".jpg,.jpeg,.png,.pdf"
                 onChange={e => setAadhaarFile(e.target.files?.[0] || null)}
-                className="w-full px-3 py-2 bg-background border border-border rounded-xl text-xs text-foreground file:mr-3 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-primary file:text-white hover:file:bg-primary/90 cursor-pointer"
+                className="w-full px-3 py-2 bg-background border border-border rounded-xl text-xs text-foreground file:mr-3 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-bold file:bg-primary file:text-white hover:file:bg-primary/90 cursor-pointer"
               />
               {aadhaarFile && (
-                <div className="flex items-center gap-2 text-xs text-emerald-400 font-medium">
+                <div className="flex items-center gap-2 text-xs text-emerald-600 font-bold">
                   <span>✓</span>
                   <span>{aadhaarFile.name} ({(aadhaarFile.size / 1024).toFixed(0)} KB)</span>
                 </div>
@@ -1001,7 +1001,7 @@ export default function Profile() {
             <button
               type="submit"
               disabled={submittingKyc}
-              className="w-full sm:w-auto px-6 py-2.5 bg-primary hover:bg-primary/90 text-white font-display font-semibold text-xs rounded-xl transition-colors disabled:opacity-50 cursor-pointer shadow-md shadow-primary/20 flex items-center justify-center gap-2"
+              className="w-full sm:w-auto px-6 py-2.5 bg-primary hover:bg-primary/90 text-white font-display font-bold text-xs rounded-xl transition-colors disabled:opacity-50 cursor-pointer shadow-md shadow-primary/20 flex items-center justify-center gap-2"
             >
               {submittingKyc ? (
                 <>
@@ -1036,7 +1036,7 @@ export default function Profile() {
                           : '📄'}
                       </span>
                       <div>
-                        <p className="font-semibold text-foreground capitalize">
+                        <p className="font-bold text-foreground capitalize">
                           {doc.document_type === 'driving_license'
                             ? 'Driving Licence'
                             : doc.document_type === 'aadhaar'
@@ -1052,12 +1052,12 @@ export default function Profile() {
 
                     <div className="flex items-center gap-2 self-end sm:self-center">
                       <span
-                        className={`px-2 py-0.5 rounded text-[10px] font-semibold uppercase ${
+                        className={`px-2 py-0.5 rounded text-[10px] font-bold uppercase ${
                           doc.status === 'verified'
-                            ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/30'
+                            ? 'bg-emerald-50 text-emerald-700 border border-emerald-200'
                             : doc.status === 'rejected'
-                            ? 'bg-red-500/10 text-red-400 border border-red-500/30'
-                            : 'bg-amber-500/10 text-amber-400 border border-amber-500/30'
+                            ? 'bg-red-50 text-red-600 border border-red-200'
+                            : 'bg-amber-50 text-amber-700 border border-amber-200'
                         }`}
                       >
                         {doc.status || 'Pending'}
@@ -1069,7 +1069,7 @@ export default function Profile() {
                           const url = profileApi.getDocumentViewUrl(doc.id);
                           window.open(url, '_blank');
                         }}
-                        className="px-3 py-1 bg-primary/10 hover:bg-primary/20 text-primary border border-primary/25 rounded-lg text-xs font-semibold transition-colors flex items-center gap-1 cursor-pointer"
+                        className="px-3 py-1 bg-primary/10 hover:bg-primary/20 text-primary border border-primary/25 rounded-lg text-xs font-bold transition-colors flex items-center gap-1 cursor-pointer"
                         title="View or download document"
                       >
                         <span>👁️</span>
@@ -1086,7 +1086,7 @@ export default function Profile() {
 
       {/* Booking Tracking Modal */}
       {trackingBooking && (
-        <div className="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-center justify-center p-4">
+        <div className="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4">
           <div className="bg-card border border-border rounded-2xl max-w-lg w-full p-6 shadow-2xl animate-in fade-in zoom-in-95">
             <div className="flex items-center justify-between border-b border-border pb-4 mb-4">
               <div>
@@ -1127,34 +1127,34 @@ export default function Profile() {
                 {/* Details */}
                 <div className="space-y-2 text-xs">
                   <div className="flex justify-between py-1 border-b border-border/50">
-                    <span className="text-muted-foreground">Vehicle:</span>
-                    <span className="font-semibold text-foreground">{trackingInfo?.car_name || trackingBooking.car?.name}</span>
+                    <span className="text-muted-foreground font-bold">Vehicle:</span>
+                    <span className="font-bold text-foreground">{trackingInfo?.car_name || trackingBooking.car?.name}</span>
                   </div>
                   <div className="flex justify-between py-1 border-b border-border/50">
-                    <span className="text-muted-foreground">License Plate:</span>
-                    <span className="font-mono font-semibold text-foreground">{trackingInfo?.license_plate || 'MH-02-DN-2024'}</span>
+                    <span className="text-muted-foreground font-bold">License Plate:</span>
+                    <span className="font-mono font-bold text-foreground">{trackingInfo?.license_plate || 'MH-02-DN-2024'}</span>
                   </div>
                   <div className="flex justify-between py-1 border-b border-border/50">
-                    <span className="text-muted-foreground">Pickup Location:</span>
-                    <span className="font-semibold text-foreground">{trackingInfo?.pickup_location}</span>
+                    <span className="text-muted-foreground font-bold">Pickup Location:</span>
+                    <span className="font-bold text-foreground">{trackingInfo?.pickup_location}</span>
                   </div>
                   {trackingInfo?.driver_assigned && (
                     <div className="flex justify-between py-1 border-b border-border/50">
-                      <span className="text-muted-foreground">Chauffeur:</span>
-                      <span className="font-semibold text-foreground">
+                      <span className="text-muted-foreground font-bold">Chauffeur:</span>
+                      <span className="font-bold text-foreground">
                         {trackingInfo?.driver_name} ({trackingInfo?.driver_phone})
                       </span>
                     </div>
                   )}
                 </div>
 
-                <div className="p-3 bg-primary/10 border border-primary/20 rounded-xl text-xs text-primary">
+                <div className="p-3 bg-primary/10 border border-primary/20 rounded-xl text-xs font-bold text-primary">
                   💡 Present your Pickup Pass OTP to the DriveNow hub executive along with your original Driving Licence.
                 </div>
 
                 <button
                   onClick={() => setTrackingBooking(null)}
-                  className="w-full py-2.5 bg-primary text-white text-xs font-semibold rounded-xl hover:bg-primary/90 transition-colors cursor-pointer"
+                  className="w-full py-2.5 bg-primary text-white text-xs font-bold rounded-xl hover:bg-primary/90 transition-colors cursor-pointer"
                 >
                   Close Tracking Details
                 </button>
@@ -1198,7 +1198,7 @@ export default function Profile() {
       {/* Rate Your Rental Experience Modal */}
       {ratingModalBooking && (
         <div
-          className="fixed inset-0 z-50 bg-black/75 backdrop-blur-sm flex items-center justify-center p-4 animate-in fade-in"
+          className="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 animate-in fade-in"
           onClick={handleCloseRateModal}
         >
           <div
@@ -1249,7 +1249,7 @@ export default function Profile() {
             <form onSubmit={handleSubmitReview} className="space-y-4">
               {/* Star Rating Selector */}
               <div className="text-center py-3 bg-muted/20 border border-border/50 rounded-xl">
-                <label className="block text-xs font-semibold text-foreground uppercase tracking-wider mb-2">
+                <label className="block text-xs font-bold text-foreground uppercase tracking-wider mb-2">
                   How would you rate your overall ride?
                 </label>
 
@@ -1277,7 +1277,7 @@ export default function Profile() {
                 </div>
 
                 {/* Rating Label Indicator */}
-                <p className="text-xs font-bold text-amber-400 min-h-[1.25rem]">
+                <p className="text-xs font-bold text-amber-600 min-h-[1.25rem]">
                   {(hoverRating || ratingValue) === 1 && '⭐ Poor — Unhappy with the experience'}
                   {(hoverRating || ratingValue) === 2 && '⭐⭐ Fair — Several things could improve'}
                   {(hoverRating || ratingValue) === 3 && '⭐⭐⭐ Good — Met standard expectations'}
@@ -1288,7 +1288,7 @@ export default function Profile() {
 
               {/* Quick Tags */}
               <div>
-                <label className="block text-[11px] font-semibold text-muted-foreground mb-1.5">
+                <label className="block text-[11px] font-bold text-muted-foreground mb-1.5">
                   Quick Highlights (Click to add):
                 </label>
                 <div className="flex flex-wrap gap-1.5">
@@ -1311,7 +1311,7 @@ export default function Profile() {
                           return `${trimmed}, ${tag}`;
                         });
                       }}
-                      className="px-2 py-1 bg-muted hover:bg-muted/80 text-[11px] text-foreground rounded-lg border border-border transition-colors cursor-pointer"
+                      className="px-2 py-1 bg-muted hover:bg-muted/80 text-[11px] font-bold text-foreground rounded-lg border border-border transition-colors cursor-pointer"
                     >
                       {tag}
                     </button>
@@ -1322,8 +1322,8 @@ export default function Profile() {
               {/* Feedback Textarea */}
               <div>
                 <div className="flex items-center justify-between mb-1.5">
-                  <label className="text-xs font-semibold text-foreground uppercase tracking-wider">
-                    Your Review & Feedback <span className="text-red-400">*</span>
+                  <label className="text-xs font-bold text-foreground uppercase tracking-wider">
+                    Your Review & Feedback <span className="text-red-600">*</span>
                   </label>
                   <span className="text-[10px] text-muted-foreground font-mono">
                     {reviewComment.length} / 2000
@@ -1342,7 +1342,7 @@ export default function Profile() {
 
               {/* Error Alert */}
               {reviewError && (
-                <div className="p-3 bg-red-400/10 border border-red-400/30 rounded-xl text-red-400 text-xs">
+                <div className="p-3 bg-red-50 border border-red-200 rounded-xl text-red-600 text-xs">
                   {reviewError}
                 </div>
               )}
@@ -1353,18 +1353,18 @@ export default function Profile() {
                   type="button"
                   onClick={handleCloseRateModal}
                   disabled={submittingReview}
-                  className="px-4 py-2 bg-muted hover:bg-muted/80 text-foreground text-xs font-semibold rounded-xl transition-colors cursor-pointer"
+                  className="px-4 py-2 bg-muted hover:bg-muted/80 text-foreground text-xs font-bold rounded-xl transition-colors cursor-pointer"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
                   disabled={submittingReview || !reviewComment.trim()}
-                  className="px-5 py-2 bg-amber-500 hover:bg-amber-600 text-black font-display font-bold text-xs rounded-xl transition-all shadow-md shadow-amber-500/20 disabled:opacity-50 cursor-pointer flex items-center gap-1.5"
+                  className="px-5 py-2 bg-primary hover:bg-primary/90 text-white font-display font-bold text-xs rounded-xl transition-all shadow-md shadow-primary/20 disabled:opacity-50 cursor-pointer flex items-center gap-1.5"
                 >
                   {submittingReview ? (
                     <>
-                      <div className="w-3.5 h-3.5 border-2 border-black border-t-transparent rounded-full animate-spin" />
+                      <div className="w-3.5 h-3.5 border-2 border-white border-t-transparent rounded-full animate-spin" />
                       <span>Submitting...</span>
                     </>
                   ) : (
@@ -1380,7 +1380,7 @@ export default function Profile() {
       {/* View Submitted Review Modal */}
       {viewReviewBooking && (
         <div
-          className="fixed inset-0 z-50 bg-black/75 backdrop-blur-sm flex items-center justify-center p-4 animate-in fade-in"
+          className="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 animate-in fade-in"
           onClick={handleCloseViewReview}
         >
           <div
@@ -1414,10 +1414,10 @@ export default function Profile() {
                   />
                 )}
                 <div>
-                  <h4 className="font-semibold text-xs text-foreground">
+                  <h4 className="font-bold text-xs text-foreground">
                     {viewReviewBooking.car?.name || (viewReviewBooking as any).carName || 'Vehicle'}
                   </h4>
-                  <div className="flex items-center text-amber-400 text-xs mt-0.5">
+                  <div className="flex items-center text-amber-500 text-xs mt-0.5">
                     {[1, 2, 3, 4, 5].map((s) => {
                       const r = (viewReviewBooking.review || (viewReviewBooking as any).review)?.rating || 5;
                       return <span key={s}>{s <= r ? '★' : '☆'}</span>;
@@ -1430,7 +1430,7 @@ export default function Profile() {
               </div>
 
               <div className="p-4 bg-muted/30 border border-border rounded-xl">
-                <span className="text-[11px] text-muted-foreground uppercase font-semibold block mb-1">
+                <span className="text-[11px] text-muted-foreground uppercase font-bold block mb-1">
                   Your Feedback:
                 </span>
                 <p className="text-xs text-foreground italic leading-relaxed">
@@ -1438,14 +1438,14 @@ export default function Profile() {
                 </p>
               </div>
 
-              <div className="p-3 bg-emerald-500/10 border border-emerald-500/20 rounded-xl text-[11px] text-emerald-400 flex items-center gap-2">
+              <div className="p-3 bg-emerald-50 border border-emerald-200 rounded-xl text-[11px] text-emerald-700 flex items-center gap-2">
                 <span>✓</span>
                 <span>Review recorded in database. Thank you for helping the DriveNow community!</span>
               </div>
 
               <button
                 onClick={handleCloseViewReview}
-                className="w-full py-2.5 bg-muted hover:bg-muted/80 text-foreground text-xs font-semibold rounded-xl transition-colors cursor-pointer"
+                className="w-full py-2.5 bg-muted hover:bg-muted/80 text-foreground text-xs font-bold rounded-xl transition-colors cursor-pointer"
               >
                 Close
               </button>

@@ -91,26 +91,26 @@ export default function RoadsideAssistance() {
   const statusBadge = (status: string) => {
     switch (status) {
       case 'resolved':
-        return <span className="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">Resolved ✓</span>;
+        return <span className="px-2.5 py-0.5 rounded-full text-xs font-bold bg-emerald-50 text-emerald-700 border border-emerald-200">Resolved ✓</span>;
       case 'in_progress':
-        return <span className="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-blue-500/10 text-blue-400 border border-blue-500/30">Mechanic En Route 🚗</span>;
+        return <span className="px-2.5 py-0.5 rounded-full text-xs font-bold bg-blue-50 text-blue-700 border border-blue-200">Mechanic En Route 🚗</span>;
       case 'assigned':
-        return <span className="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-purple-500/10 text-purple-400 border border-purple-500/30">Assigned</span>;
+        return <span className="px-2.5 py-0.5 rounded-full text-xs font-bold bg-purple-50 text-purple-700 border border-purple-200">Assigned</span>;
       default:
-        return <span className="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-amber-500/10 text-amber-400 border border-amber-500/30">Dispatched ⏳</span>;
+        return <span className="px-2.5 py-0.5 rounded-full text-xs font-bold bg-amber-50 text-amber-700 border border-amber-200">Dispatched ⏳</span>;
     }
   };
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 py-8">
       {/* Emergency Banner */}
-      <div className="bg-red-950/40 border border-red-500/40 rounded-2xl p-6 sm:p-8 mb-8 flex flex-col md:flex-row items-center justify-between gap-6 shadow-xl">
+      <div className="bg-red-50 border border-red-200 rounded-2xl p-6 sm:p-8 mb-8 flex flex-col md:flex-row items-center justify-between gap-6 shadow-sm">
         <div className="flex items-center gap-4">
-          <div className="w-14 h-14 rounded-2xl bg-red-500/20 border border-red-500/40 flex items-center justify-center text-red-400 text-3xl font-black shrink-0 animate-pulse">
+          <div className="w-14 h-14 rounded-2xl bg-red-100 border border-red-200 flex items-center justify-center text-red-600 text-3xl font-black shrink-0 animate-pulse">
             🚨
           </div>
           <div>
-            <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-red-500/20 text-red-400 border border-red-500/30 uppercase tracking-wider">
+            <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-red-100 text-red-700 border border-red-200 uppercase tracking-wider">
               24/7 Nationwide Rapid Response
             </span>
             <h1 className="font-display font-black text-2xl sm:text-3xl text-foreground mt-1">
@@ -122,11 +122,11 @@ export default function RoadsideAssistance() {
           </div>
         </div>
 
-        <div className="w-full md:w-auto text-left md:text-right border-t md:border-t-0 pt-4 md:pt-0 border-red-500/20">
-          <p className="text-xs text-muted-foreground uppercase tracking-wider font-semibold">Toll-Free SOS Hotline</p>
+        <div className="w-full md:w-auto text-left md:text-right border-t md:border-t-0 pt-4 md:pt-0 border-red-200">
+          <p className="text-xs text-muted-foreground uppercase tracking-wider font-bold">Toll-Free SOS Hotline</p>
           <a
             href="tel:18001234567"
-            className="text-2xl sm:text-3xl font-display font-black text-red-400 hover:underline block tracking-tight"
+            className="text-2xl sm:text-3xl font-display font-black text-red-600 hover:underline block tracking-tight"
           >
             1800-123-4567
           </a>
@@ -142,13 +142,13 @@ export default function RoadsideAssistance() {
           </p>
 
           {successMsg && (
-            <div className="mb-6 p-4 bg-emerald-400/10 border border-emerald-400/30 rounded-xl text-emerald-400 text-xs font-medium">
+            <div className="mb-6 p-4 bg-emerald-50 border border-emerald-200 rounded-xl text-emerald-700 text-xs font-medium">
               {successMsg}
             </div>
           )}
 
           {errorMsg && (
-            <div className="mb-6 p-4 bg-red-400/10 border border-red-400/30 rounded-xl text-red-400 text-xs font-medium">
+            <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-xl text-red-600 text-xs font-medium">
               {errorMsg}
             </div>
           )}
@@ -156,7 +156,7 @@ export default function RoadsideAssistance() {
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label className="block text-xs font-semibold text-foreground uppercase tracking-wider mb-1.5">
+                <label className="block text-xs font-bold text-foreground uppercase tracking-wider mb-1.5">
                   Nature of Emergency *
                 </label>
                 <select
@@ -171,7 +171,7 @@ export default function RoadsideAssistance() {
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-foreground uppercase tracking-wider mb-1.5">
+                <label className="block text-xs font-bold text-foreground uppercase tracking-wider mb-1.5">
                   Linked Active Booking (Optional)
                 </label>
                 <select
@@ -190,7 +190,7 @@ export default function RoadsideAssistance() {
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-foreground uppercase tracking-wider mb-1.5">
+              <label className="block text-xs font-bold text-foreground uppercase tracking-wider mb-1.5">
                 Exact Location / Highway / Landmark *
               </label>
               <input
@@ -204,7 +204,7 @@ export default function RoadsideAssistance() {
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-foreground uppercase tracking-wider mb-1.5">
+              <label className="block text-xs font-bold text-foreground uppercase tracking-wider mb-1.5">
                 Additional Details / Vehicle Symptoms
               </label>
               <textarea
@@ -219,7 +219,7 @@ export default function RoadsideAssistance() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full py-3 bg-red-500 hover:bg-red-600 text-white font-display font-semibold text-sm rounded-xl transition-colors disabled:opacity-50 cursor-pointer shadow-lg shadow-red-500/20"
+              className="w-full py-3 bg-red-500 hover:bg-red-600 text-white font-display font-bold text-sm rounded-xl transition-colors disabled:opacity-50 cursor-pointer shadow-lg shadow-red-500/20"
             >
               {loading ? 'Transmitting Distress Request...' : 'Dispatch Roadside Technician Immediately ➔'}
             </button>
@@ -232,23 +232,23 @@ export default function RoadsideAssistance() {
             <h3 className="font-display font-bold text-base text-foreground mb-4">What's Covered Free</h3>
             <ul className="space-y-3 text-xs text-muted-foreground">
               <li className="flex items-start gap-2">
-                <span className="text-emerald-400 font-bold">✓</span>
+                <span className="text-emerald-600 font-bold">✓</span>
                 <span>On-spot mechanical triage & engine diagnosis</span>
               </li>
               <li className="flex items-start gap-2">
-                <span className="text-emerald-400 font-bold">✓</span>
+                <span className="text-emerald-600 font-bold">✓</span>
                 <span>Stepney tyre replacement and air replenishment</span>
               </li>
               <li className="flex items-start gap-2">
-                <span className="text-emerald-400 font-bold">✓</span>
+                <span className="text-emerald-600 font-bold">✓</span>
                 <span>Battery jumper cable boost service</span>
               </li>
               <li className="flex items-start gap-2">
-                <span className="text-emerald-400 font-bold">✓</span>
+                <span className="text-emerald-600 font-bold">✓</span>
                 <span>Free flatbed towing to the nearest DriveNow certified workshop</span>
               </li>
               <li className="flex items-start gap-2">
-                <span className="text-emerald-400 font-bold">✓</span>
+                <span className="text-emerald-600 font-bold">✓</span>
                 <span>Replacement vehicle dispatch if trip cannot continue</span>
               </li>
             </ul>
@@ -286,8 +286,8 @@ export default function RoadsideAssistance() {
                   <p className="text-xs text-muted-foreground mt-1">📍 {req.location}</p>
                 </div>
                 <div className="text-left sm:text-right">
-                  <span className="text-[11px] text-muted-foreground block">Estimated Response</span>
-                  <span className="text-xs font-semibold text-foreground">{req.eta || '25-35 mins'}</span>
+                  <span className="text-[11px] font-bold text-muted-foreground block">Estimated Response</span>
+                  <span className="text-xs font-bold text-foreground">{req.eta || '25-35 mins'}</span>
                 </div>
               </div>
             ))}

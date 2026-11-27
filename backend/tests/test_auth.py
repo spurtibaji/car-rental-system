@@ -1,4 +1,5 @@
 from fastapi.testclient import TestClient
+from app.core.rate_limiter import auth_rate_limiter
 
 
 def test_register_success(client: TestClient):
@@ -49,6 +50,27 @@ def test_login_invalid_credentials(client: TestClient):
     response = client.post("/api/v1/auth/login", json=payload)
     assert response.status_code == 401
     assert "Invalid email or password" in response.json()["message"]
+
+
+def test_auth_rate_limit_returns_429(client: TestClient):
+    auth_rate_limiter.requests.clear()
+    try:
+        for _ in range(10):
+            response = client.post(
+                "/api/v1/auth/login",
+                json={"email": "nobody@example.com", "password": "WrongPassword123!"},
+            )
+            assert response.status_code == 401
+
+        response = client.post(
+            "/api/v1/auth/login",
+            json={"email": "nobody@example.com", "password": "WrongPassword123!"},
+        )
+        assert response.status_code == 429
+        assert response.headers.get("Retry-After")
+        assert response.json()["success"] is False
+    finally:
+        auth_rate_limiter.requests.clear()
 
 
 def test_get_me_authenticated(client: TestClient, customer_headers: dict):

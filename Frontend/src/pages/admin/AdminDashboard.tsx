@@ -55,7 +55,7 @@ export default function AdminDashboard() {
 
   if (error || !stats) {
     return (
-      <div className="p-6 bg-red-500/10 border border-red-500/30 rounded-2xl text-red-400 text-sm">
+      <div className="p-6 bg-red-50 border border-red-200 rounded-2xl text-red-600 text-sm">
         <p className="font-bold">Error loading dashboard telemetry</p>
         <p className="text-xs mt-1">{error || 'Could not connect to admin metrics service.'}</p>
       </div>
@@ -83,7 +83,7 @@ export default function AdminDashboard() {
           {stats.pendingKYC > 0 && (
             <Link
               to="/admin/kyc"
-              className="px-3 py-1.5 bg-amber-500/10 hover:bg-amber-500/20 text-amber-400 border border-amber-500/30 rounded-xl text-xs font-semibold flex items-center gap-2 transition-colors"
+              className="px-3 py-1.5 bg-amber-50 hover:bg-amber-100 text-amber-700 border border-amber-200 rounded-xl text-xs font-bold flex items-center gap-2 transition-colors"
             >
               <span>⏳</span>
               <span>{stats.pendingKYC} Pending KYC</span>
@@ -91,7 +91,7 @@ export default function AdminDashboard() {
           )}
           <Link
             to="/admin/cars"
-            className="px-4 py-2 bg-primary hover:bg-primary/90 text-white rounded-xl text-xs font-semibold transition-colors shadow-md shadow-primary/20"
+            className="px-4 py-2 bg-primary hover:bg-primary/90 text-white rounded-xl text-xs font-bold transition-colors shadow-md shadow-primary/20"
           >
             + Add New Vehicle
           </Link>
@@ -103,8 +103,8 @@ export default function AdminDashboard() {
         {/* Total Revenue */}
         <div className="bg-card border border-border rounded-2xl p-5 shadow-sm">
           <div className="flex items-center justify-between">
-            <span className="text-xs text-muted-foreground uppercase font-semibold">Total Revenue</span>
-            <span className="w-8 h-8 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-sm font-bold">
+            <span className="text-xs text-muted-foreground uppercase font-bold">Total Revenue</span>
+            <span className="w-8 h-8 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-sm font-bold">
               ₹
             </span>
           </div>
@@ -112,7 +112,7 @@ export default function AdminDashboard() {
             ₹{stats.totalRevenue.toLocaleString()}
           </p>
           <div className="flex items-center gap-2 text-[11px] text-muted-foreground mt-2">
-            <span className="text-emerald-400 font-semibold">+{stats.revenueGrowth}%</span>
+            <span className="text-emerald-600 font-bold">+{stats.revenueGrowth}%</span>
             <span>growth this month</span>
           </div>
         </div>
@@ -120,8 +120,8 @@ export default function AdminDashboard() {
         {/* Active Bookings */}
         <div className="bg-card border border-border rounded-2xl p-5 shadow-sm">
           <div className="flex items-center justify-between">
-            <span className="text-xs text-muted-foreground uppercase font-semibold">Active Bookings</span>
-            <span className="w-8 h-8 rounded-xl bg-blue-500/10 text-blue-400 flex items-center justify-center text-sm">
+            <span className="text-xs text-muted-foreground uppercase font-bold">Active Bookings</span>
+            <span className="w-8 h-8 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center text-sm">
               📑
             </span>
           </div>
@@ -129,7 +129,7 @@ export default function AdminDashboard() {
             {stats.activeBookings}
           </p>
           <div className="flex items-center gap-2 text-[11px] text-muted-foreground mt-2">
-            <span className="text-blue-400 font-semibold">{utilizationRate}%</span>
+            <span className="text-blue-600 font-bold">{utilizationRate}%</span>
             <span>fleet utilization</span>
           </div>
         </div>
@@ -137,8 +137,8 @@ export default function AdminDashboard() {
         {/* Fleet Availability */}
         <div className="bg-card border border-border rounded-2xl p-5 shadow-sm">
           <div className="flex items-center justify-between">
-            <span className="text-xs text-muted-foreground uppercase font-semibold">Vehicles in Fleet</span>
-            <span className="w-8 h-8 rounded-xl bg-purple-500/10 text-purple-400 flex items-center justify-center text-sm">
+            <span className="text-xs text-muted-foreground uppercase font-bold">Vehicles in Fleet</span>
+            <span className="w-8 h-8 rounded-xl bg-purple-50 text-purple-600 flex items-center justify-center text-sm">
               🚗
             </span>
           </div>
@@ -146,7 +146,7 @@ export default function AdminDashboard() {
             {stats.totalCars}
           </p>
           <div className="flex items-center gap-2 text-[11px] text-muted-foreground mt-2">
-            <span className="text-emerald-400 font-semibold">{stats.availableCars} Available</span>
+            <span className="text-emerald-600 font-bold">{stats.availableCars} Available</span>
             <span>· {stats.totalCars - stats.availableCars} on road</span>
           </div>
         </div>
@@ -154,8 +154,8 @@ export default function AdminDashboard() {
         {/* Registered Customers */}
         <div className="bg-card border border-border rounded-2xl p-5 shadow-sm">
           <div className="flex items-center justify-between">
-            <span className="text-xs text-muted-foreground uppercase font-semibold">Customers</span>
-            <span className="w-8 h-8 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center text-sm">
+            <span className="text-xs text-muted-foreground uppercase font-bold">Customers</span>
+            <span className="w-8 h-8 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center text-sm">
               👥
             </span>
           </div>
@@ -163,7 +163,7 @@ export default function AdminDashboard() {
             {stats.totalCustomers}
           </p>
           <div className="flex items-center gap-2 text-[11px] text-muted-foreground mt-2">
-            <span className={stats.pendingKYC > 0 ? 'text-amber-400 font-semibold' : 'text-emerald-400 font-semibold'}>
+            <span className={stats.pendingKYC > 0 ? 'text-amber-600 font-bold' : 'text-emerald-600 font-bold'}>
               {stats.pendingKYC} awaiting KYC
             </span>
           </div>
@@ -179,7 +179,7 @@ export default function AdminDashboard() {
           </div>
           <Link
             to="/admin/revenue"
-            className="text-xs text-primary hover:underline font-semibold"
+            className="text-xs text-primary hover:underline font-bold"
           >
             View Full Financial Reports ➔
           </Link>

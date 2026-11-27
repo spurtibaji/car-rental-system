@@ -24,7 +24,7 @@ export default function Navbar() {
   const isActive = (path: string) => location.pathname === path;
 
   return (
-    <nav className="sticky top-0 z-50 bg-[#090909]/95 backdrop-blur-md border-b border-border">
+    <nav className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-border shadow-xs">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
@@ -48,7 +48,7 @@ export default function Navbar() {
               <Link
                 key={path}
                 to={path}
-                className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
+                className={`px-3 py-2 rounded-lg text-sm font-bold transition-colors ${
                   isActive(path)
                     ? 'text-primary bg-primary/10'
                     : 'text-secondary-foreground hover:text-foreground hover:bg-muted'
@@ -93,13 +93,13 @@ export default function Navbar() {
                       {user.name ? user.name.split(' ').map(n => n[0]).join('').slice(0, 2) : 'U'}
                     </span>
                   </div>
-                  <span className="hidden lg:inline text-xs font-medium text-foreground max-w-[120px] truncate">
+                  <span className="hidden lg:inline text-xs font-bold text-foreground max-w-[120px] truncate">
                     {user.name || 'Profile'}
                   </span>
                 </Link>
                 <button
                   onClick={handleLogout}
-                  className="hidden sm:inline-flex px-3 py-1.5 rounded-lg text-xs font-medium text-muted-foreground hover:text-red-400 hover:bg-red-400/10 border border-border transition-colors cursor-pointer"
+                  className="hidden sm:inline-flex px-3 py-1.5 rounded-lg text-xs font-bold text-muted-foreground hover:text-red-600 hover:bg-red-50 border border-border transition-colors cursor-pointer"
                   title="Sign Out"
                 >
                   Logout
@@ -109,13 +109,13 @@ export default function Navbar() {
               <div className="flex items-center gap-1.5">
                 <Link
                   to="/login"
-                  className="px-3 py-1.5 rounded-lg text-xs font-medium text-foreground hover:bg-muted border border-border transition-colors"
+                  className="px-3 py-1.5 rounded-lg text-xs font-bold text-foreground hover:bg-muted border border-border transition-colors"
                 >
                   Sign In
                 </Link>
                 <Link
                   to="/signup"
-                  className="hidden sm:inline-flex px-3 py-1.5 rounded-lg text-xs font-medium bg-primary text-white hover:bg-primary/90 transition-colors shadow-sm"
+                  className="hidden sm:inline-flex px-3 py-1.5 rounded-lg text-xs font-bold bg-primary text-white hover:bg-primary/90 transition-colors shadow-sm"
                 >
                   Sign Up
                 </Link>
@@ -150,7 +150,7 @@ export default function Navbar() {
                   className="w-full pl-9 pr-4 py-2.5 bg-muted rounded-lg text-sm text-foreground placeholder-muted-foreground outline-none border border-border focus:border-primary transition-colors"
                   autoFocus
                 />
-                <button type="submit" className="absolute right-2 top-1/2 -translate-y-1/2 px-3 py-1 bg-primary text-white text-xs rounded-md font-medium cursor-pointer">
+                <button type="submit" className="absolute right-2 top-1/2 -translate-y-1/2 px-3 py-1 bg-primary text-white text-xs rounded-md font-bold cursor-pointer">
                   Search
                 </button>
               </div>
@@ -172,7 +172,7 @@ export default function Navbar() {
                 key={path}
                 to={path}
                 onClick={() => setMenuOpen(false)}
-                className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
+                className={`px-3 py-2 rounded-lg text-sm font-bold transition-colors ${
                   isActive(path) ? 'text-primary bg-primary/10' : 'text-secondary-foreground hover:bg-muted'
                 }`}
               >
@@ -185,13 +185,13 @@ export default function Navbar() {
                 <Link
                   to="/profile"
                   onClick={() => setMenuOpen(false)}
-                  className="px-3 py-2 rounded-lg text-sm font-medium text-foreground hover:bg-muted"
+                  className="px-3 py-2 rounded-lg text-sm font-bold text-foreground hover:bg-muted"
                 >
                   My Profile & Wallet
                 </Link>
                 <button
                   onClick={handleLogout}
-                  className="text-left px-3 py-2 rounded-lg text-sm font-medium text-red-400 hover:bg-red-400/10 cursor-pointer"
+                  className="text-left px-3 py-2 rounded-lg text-sm font-bold text-red-600 hover:bg-red-50 cursor-pointer"
                 >
                   Logout
                 </button>
@@ -201,14 +201,14 @@ export default function Navbar() {
                 <Link
                   to="/login"
                   onClick={() => setMenuOpen(false)}
-                  className="flex-1 text-center py-2 rounded-lg text-sm font-medium border border-border text-foreground hover:bg-muted"
+                  className="flex-1 text-center py-2 rounded-lg text-sm font-bold border border-border text-foreground hover:bg-muted"
                 >
                   Sign In
                 </Link>
                 <Link
                   to="/signup"
                   onClick={() => setMenuOpen(false)}
-                  className="flex-1 text-center py-2 rounded-lg text-sm font-medium bg-primary text-white hover:bg-primary/90"
+                  className="flex-1 text-center py-2 rounded-lg text-sm font-bold bg-primary text-white hover:bg-primary/90"
                 >
                   Sign Up
                 </Link>

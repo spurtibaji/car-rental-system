@@ -170,10 +170,10 @@ export default function Cart() {
   }
 
   const statusColors: Record<string, string> = {
-    confirmed: 'text-blue-400 bg-blue-400/10 border-blue-400/20',
-    active: 'text-emerald-400 bg-emerald-400/10 border-emerald-400/20',
+    confirmed: 'text-blue-700 bg-blue-50 border-blue-200',
+    active: 'text-emerald-700 bg-emerald-50 border-emerald-200',
     completed: 'text-muted-foreground bg-muted border-border',
-    cancelled: 'text-red-400 bg-red-400/10 border-red-400/20',
+    cancelled: 'text-red-600 bg-red-50 border-red-200',
   };
 
   return (
@@ -190,7 +190,7 @@ export default function Cart() {
           {cart && (
             <button
               onClick={() => setActiveTab('checkout')}
-              className={`px-4 py-2 rounded-xl text-xs font-semibold transition-colors cursor-pointer ${
+              className={`px-4 py-2 rounded-xl text-xs font-bold transition-colors cursor-pointer ${
                 activeTab === 'checkout'
                   ? 'bg-primary text-white shadow-lg shadow-primary/25'
                   : 'bg-muted text-muted-foreground hover:text-foreground border border-border'
@@ -201,7 +201,7 @@ export default function Cart() {
           )}
           <button
             onClick={() => setActiveTab('booked')}
-            className={`px-4 py-2 rounded-xl text-xs font-semibold transition-colors cursor-pointer ${
+            className={`px-4 py-2 rounded-xl text-xs font-bold transition-colors cursor-pointer ${
               activeTab === 'booked'
                 ? 'bg-primary text-white shadow-lg shadow-primary/25'
                 : 'bg-muted text-muted-foreground hover:text-foreground border border-border'
@@ -213,11 +213,11 @@ export default function Cart() {
       </div>
 
       {confirmedBookingId && (
-        <div className="mb-6 p-4 bg-emerald-500/10 border border-emerald-500/30 rounded-2xl flex items-center justify-between">
+        <div className="mb-6 p-4 bg-emerald-50 border border-emerald-200 rounded-2xl flex items-center justify-between">
           <div className="flex items-center gap-3">
             <span className="text-2xl">🎉</span>
             <div>
-              <p className="font-display font-bold text-sm text-emerald-400">Booking Confirmed!</p>
+              <p className="font-display font-bold text-sm text-emerald-700">Booking Confirmed!</p>
               <p className="text-xs text-muted-foreground">Booking ID: <span className="font-mono font-bold text-foreground">{confirmedBookingId}</span></p>
             </div>
           </div>
@@ -231,13 +231,13 @@ export default function Cart() {
           {/* Main Checkout Steps (2 cols) */}
           <div className="lg:col-span-2 space-y-6">
             {submitError && (
-              <div className="p-3 bg-red-400/10 border border-red-400/30 rounded-xl text-red-400 text-xs font-medium">
+              <div className="p-3 bg-red-50 border border-red-200 rounded-xl text-red-600 text-xs font-medium">
                 {submitError}
               </div>
             )}
 
             {/* Steps Indicator */}
-            <div className="flex items-center justify-between bg-card border border-border rounded-xl p-4 text-xs font-semibold">
+            <div className="flex items-center justify-between bg-card border border-border rounded-xl p-4 text-xs font-bold">
               <span className={step >= 1 ? 'text-primary' : 'text-muted-foreground'}>1. Hub & Timing</span>
               <span>→</span>
               <span className={step >= 2 ? 'text-primary' : 'text-muted-foreground'}>2. Review Details</span>
@@ -283,7 +283,7 @@ export default function Cart() {
 
                 <div className="grid grid-cols-2 gap-3 pt-2">
                   <div>
-                    <label className="text-xs font-semibold text-foreground block mb-1">Start Date</label>
+                    <label className="text-xs font-bold text-foreground block mb-1">Start Date</label>
                     <input
                       type="date"
                       min={todayStr}
@@ -296,7 +296,7 @@ export default function Cart() {
                     />
                   </div>
                   <div>
-                    <label className="text-xs font-semibold text-foreground block mb-1">End Date</label>
+                    <label className="text-xs font-bold text-foreground block mb-1">End Date</label>
                     <input
                       type="date"
                       min={pickupDate}
@@ -309,7 +309,7 @@ export default function Cart() {
 
                 <div className="grid grid-cols-2 gap-3 pt-2">
                   <div>
-                    <label className="text-xs font-semibold text-foreground block mb-1">Pick-up Time</label>
+                    <label className="text-xs font-bold text-foreground block mb-1">Pick-up Time</label>
                     <input
                       type="time"
                       value={pickupTime}
@@ -318,7 +318,7 @@ export default function Cart() {
                     />
                   </div>
                   <div>
-                    <label className="text-xs font-semibold text-foreground block mb-1">Return Time</label>
+                    <label className="text-xs font-bold text-foreground block mb-1">Return Time</label>
                     <input
                       type="time"
                       value={returnTime}
@@ -329,13 +329,13 @@ export default function Cart() {
                 </div>
 
                 <div className="p-3 bg-muted/50 rounded-xl border border-border/50 text-xs flex justify-between items-center">
-                  <span className="text-muted-foreground">Rental Duration:</span>
+                  <span className="text-muted-foreground font-bold">Rental Duration:</span>
                   <span className="font-bold text-foreground">{durationDays} Day{durationDays > 1 ? 's' : ''} (₹{dailyRate.toLocaleString()}/day)</span>
                 </div>
 
                 <button
                   onClick={handleConfirm}
-                  className="w-full py-3 bg-primary hover:bg-primary/90 text-white font-display font-semibold rounded-xl text-sm transition-colors mt-4 cursor-pointer"
+                  className="w-full py-3 bg-primary hover:bg-primary/90 text-white font-display font-bold rounded-xl text-sm transition-colors mt-4 cursor-pointer"
                 >
                   Continue to Summary
                 </button>
@@ -359,22 +359,22 @@ export default function Cart() {
 
                 <div className="space-y-2 text-xs border-y border-border py-3">
                   <div className="flex justify-between text-muted-foreground">
-                    <span>Route</span>
-                    <span className="text-foreground">{pickupLocation.trim()} → {dropLocation.trim() || pickupLocation.trim()}</span>
+                    <span className="font-bold">Route</span>
+                    <span className="text-foreground font-bold">{pickupLocation.trim()} → {dropLocation.trim() || pickupLocation.trim()}</span>
                   </div>
                   <div className="flex justify-between text-muted-foreground">
-                    <span>Driver Option</span>
-                    <span className="text-foreground">{cart.withDriver ? 'Chauffeur Included (+₹800/day)' : 'Self-Drive'}</span>
+                    <span className="font-bold">Driver Option</span>
+                    <span className="text-foreground font-bold">{cart.withDriver ? 'Chauffeur Included (+₹800/day)' : 'Self-Drive'}</span>
                   </div>
                   <div className="flex justify-between text-muted-foreground">
-                    <span>Deposit (Refundable)</span>
-                    <span className="text-foreground font-semibold">₹{(cart.car.deposit || 5000).toLocaleString()}</span>
+                    <span className="font-bold">Deposit (Refundable)</span>
+                    <span className="text-foreground font-bold">₹{(cart.car.deposit || 5000).toLocaleString()}</span>
                   </div>
                 </div>
 
                 {/* Coupon Input */}
                 <div className="pt-2">
-                  <label className="text-xs font-semibold text-foreground block mb-1">Have a Coupon?</label>
+                  <label className="text-xs font-bold text-foreground block mb-1">Have a Coupon?</label>
                   <div className="flex gap-2">
                     <input
                       type="text"
@@ -386,25 +386,25 @@ export default function Cart() {
                     <button
                       type="button"
                       onClick={applyCoupon}
-                      className="px-4 py-2 bg-muted border border-border rounded-xl text-xs font-semibold hover:bg-secondary text-foreground cursor-pointer"
+                      className="px-4 py-2 bg-muted border border-border rounded-xl text-xs font-bold hover:bg-secondary text-foreground cursor-pointer"
                     >
                       Apply
                     </button>
                   </div>
-                  {couponError && <p className="text-xs text-red-400 mt-1">{couponError}</p>}
-                  {couponApplied && <p className="text-xs text-emerald-400 mt-1">✓ Applied: {couponApplied.title} (-₹{couponDiscount})</p>}
+                  {couponError && <p className="text-xs text-red-600 mt-1">{couponError}</p>}
+                  {couponApplied && <p className="text-xs text-emerald-600 mt-1">✓ Applied: {couponApplied.title} (-₹{couponDiscount})</p>}
                 </div>
 
                 <div className="flex gap-3 pt-2">
                   <button
                     onClick={() => setStep(1)}
-                    className="py-3 px-5 bg-muted border border-border rounded-xl text-xs font-semibold hover:bg-secondary text-foreground cursor-pointer"
+                    className="py-3 px-5 bg-muted border border-border rounded-xl text-xs font-bold hover:bg-secondary text-foreground cursor-pointer"
                   >
                     Back
                   </button>
                   <button
                     onClick={handleConfirm}
-                    className="flex-1 py-3 bg-primary hover:bg-primary/90 text-white font-display font-semibold rounded-xl text-sm transition-colors cursor-pointer"
+                    className="flex-1 py-3 bg-primary hover:bg-primary/90 text-white font-display font-bold rounded-xl text-sm transition-colors cursor-pointer"
                   >
                     Proceed to Payment
                   </button>
@@ -436,7 +436,7 @@ export default function Cart() {
                     />
                   </div>
                   {useWallet && (
-                    <p className="text-xs text-emerald-400">
+                    <p className="text-xs text-emerald-600">
                       Wallet will cover the full booking total, including any security deposit. Other payment methods are unavailable.
                     </p>
                   )}
@@ -460,7 +460,7 @@ export default function Cart() {
                     >
                       <div className="flex items-center gap-3">
                         <span className="text-lg">{m.icon}</span>
-                        <span className="text-xs font-semibold text-foreground">{m.label}</span>
+                        <span className="text-xs font-bold text-foreground">{m.label}</span>
                       </div>
                       <input
                         type="radio"
@@ -475,7 +475,7 @@ export default function Cart() {
                 </div>}
 
                 {!user && (
-                  <div className="p-3 bg-amber-400/10 border border-amber-400/30 rounded-xl text-amber-400 text-xs">
+                  <div className="p-3 bg-amber-50 border border-amber-200 rounded-xl text-amber-700 text-xs">
                     Please <Link to="/login" className="font-bold underline">Sign In</Link> to complete booking.
                   </div>
                 )}
@@ -483,14 +483,14 @@ export default function Cart() {
                 <div className="flex gap-3 pt-4">
                   <button
                     onClick={() => setStep(2)}
-                    className="py-3 px-5 bg-muted border border-border rounded-xl text-xs font-semibold hover:bg-secondary text-foreground cursor-pointer"
+                    className="py-3 px-5 bg-muted border border-border rounded-xl text-xs font-bold hover:bg-secondary text-foreground cursor-pointer"
                   >
                     Back
                   </button>
                   <button
                     onClick={handleConfirm}
                     disabled={isSubmitting}
-                    className="flex-1 py-3.5 bg-primary hover:bg-primary/90 text-white font-display font-semibold rounded-xl text-sm transition-colors disabled:opacity-50 shadow-lg shadow-primary/25 cursor-pointer"
+                    className="flex-1 py-3.5 bg-primary hover:bg-primary/90 text-white font-display font-bold rounded-xl text-sm transition-colors disabled:opacity-50 shadow-lg shadow-primary/25 cursor-pointer"
                   >
                     {isSubmitting ? 'Confirming Booking...' : `Pay ₹${finalAmount.toLocaleString()} & Confirm`}
                   </button>
@@ -506,12 +506,12 @@ export default function Cart() {
               <div className="flex items-center gap-3 pb-3 border-b border-border">
                 <img src={cart.car.image} alt={cart.car.name} className="w-14 h-10 object-cover rounded-lg bg-muted" />
                 <div>
-                  <p className="font-semibold text-xs text-foreground">{cart.car.name}</p>
-                  <p className="text-[11px] text-muted-foreground">{durationDays} Day{durationDays > 1 ? 's' : ''} rental</p>
+                  <p className="font-bold text-xs text-foreground">{cart.car.name}</p>
+                  <p className="text-[11px] text-muted-foreground font-bold">{durationDays} Day{durationDays > 1 ? 's' : ''} rental</p>
                 </div>
               </div>
 
-              <div className="space-y-2 text-xs text-muted-foreground">
+              <div className="space-y-2 text-xs text-muted-foreground font-bold">
                 <div className="flex justify-between">
                   <span>Base Price</span>
                   <span>₹{baseAmount.toLocaleString()}</span>
@@ -523,13 +523,13 @@ export default function Cart() {
                   </div>
                 )}
                 {couponDiscount > 0 && (
-                  <div className="flex justify-between text-emerald-400">
+                  <div className="flex justify-between text-emerald-600">
                     <span>Coupon Discount</span>
                     <span>-₹{couponDiscount.toLocaleString()}</span>
                   </div>
                 )}
                 {walletDiscount > 0 && (
-                  <div className="flex justify-between text-emerald-400">
+                  <div className="flex justify-between text-emerald-600">
                     <span>Wallet Applied</span>
                     <span>-₹{walletDiscount.toLocaleString()}</span>
                   </div>
@@ -542,7 +542,7 @@ export default function Cart() {
 
               <button
                 onClick={() => setCart(null)}
-                className="w-full py-2 text-xs text-red-400 hover:bg-red-400/10 border border-transparent hover:border-red-400/20 rounded-xl transition-colors cursor-pointer"
+                className="w-full py-2 text-xs font-bold text-red-600 hover:bg-red-50 border border-transparent hover:border-red-200 rounded-xl transition-colors cursor-pointer"
               >
                 Clear Cart
               </button>
@@ -563,7 +563,7 @@ export default function Cart() {
               <div className="text-4xl mb-3">📋</div>
               <h3 className="font-display font-bold text-lg text-foreground mb-1">No Active Bookings</h3>
               <p className="text-muted-foreground text-xs mb-4">You have not booked any cars yet.</p>
-              <Link to="/cars" className="px-5 py-2.5 bg-primary text-white text-xs font-semibold rounded-xl hover:bg-primary/90">
+              <Link to="/cars" className="px-5 py-2.5 bg-primary text-white text-xs font-bold rounded-xl hover:bg-primary/90">
                 Explore Fleet
               </Link>
             </div>
@@ -580,11 +580,11 @@ export default function Cart() {
                     <div>
                       <div className="flex items-center gap-2 mb-1">
                         <h3 className="font-display font-bold text-base text-foreground">{b.carName}</h3>
-                        <span className={`px-2 py-0.5 rounded-full text-[10px] font-semibold uppercase border ${statusColors[b.status]}`}>
+                        <span className={`px-2 py-0.5 rounded-full text-[10px] font-bold uppercase border ${statusColors[b.status]}`}>
                           {b.status}
                         </span>
                       </div>
-                      <p className="text-xs text-muted-foreground">
+                      <p className="text-xs font-bold text-muted-foreground">
                         📍 {b.pickupLocation} → {b.dropLocation || b.pickupLocation}
                       </p>
                       <p className="text-xs text-muted-foreground">
@@ -600,7 +600,7 @@ export default function Cart() {
                     <div className="flex gap-2">
                       <button
                         onClick={() => setTrackingId(trackingId === b.id ? null : b.id)}
-                        className="px-3 py-1.5 bg-muted border border-border rounded-xl text-xs font-semibold text-foreground hover:bg-secondary cursor-pointer"
+                        className="px-3 py-1.5 bg-muted border border-border rounded-xl text-xs font-bold text-foreground hover:bg-secondary cursor-pointer"
                       >
                         {trackingId === b.id ? 'Hide' : 'Track'}
                       </button>
@@ -610,7 +610,7 @@ export default function Cart() {
                             setCancelError(null);
                             setBookingToCancel({ id: b.id, name: b.carName });
                           }}
-                          className="px-3 py-1.5 bg-red-400/10 border border-red-400/20 text-red-400 rounded-xl text-xs font-semibold hover:bg-red-400/20 cursor-pointer"
+                          className="px-3 py-1.5 bg-red-50 border border-red-200 text-red-600 rounded-xl text-xs font-bold hover:bg-red-100 cursor-pointer"
                         >
                           Cancel
                         </button>
@@ -621,7 +621,7 @@ export default function Cart() {
 
                 {trackingId === b.id && (
                   <div className="p-4 bg-muted/40 border-t border-border text-xs">
-                    <p className="text-muted-foreground font-mono mb-3">Booking Reference: {b.id}</p>
+                    <p className="text-muted-foreground font-mono font-bold mb-3">Booking Reference: {b.id}</p>
                     <div className="flex items-center justify-between">
                       {['Confirmed', 'Prepared', 'Active Ride', 'Returned'].map((s, idx) => (
                         <div key={s} className="flex flex-col items-center flex-1 text-center">
@@ -630,7 +630,7 @@ export default function Cart() {
                           }`}>
                             {idx + 1}
                           </div>
-                          <span className="text-[11px] mt-1 text-foreground font-medium">{s}</span>
+                          <span className="text-[11px] mt-1 text-foreground font-bold">{s}</span>
                         </div>
                       ))}
                     </div>

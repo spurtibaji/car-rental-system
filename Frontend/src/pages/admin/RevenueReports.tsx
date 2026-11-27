@@ -53,7 +53,7 @@ export default function RevenueReports() {
 
   if (error || !report) {
     return (
-      <div className="p-6 bg-red-500/10 border border-red-500/30 rounded-2xl text-red-400 text-sm">
+      <div className="p-6 bg-red-50 border border-red-200 rounded-2xl text-red-600 text-sm">
         <p className="font-bold">Error loading financial statements</p>
         <p className="text-xs mt-1">{error || 'Could not retrieve financial data.'}</p>
       </div>
@@ -79,13 +79,13 @@ export default function RevenueReports() {
         <div className="flex items-center gap-3">
           <button
             onClick={loadReport}
-            className="px-3 py-1.5 bg-muted hover:bg-muted/80 text-foreground rounded-xl text-xs font-semibold transition-colors cursor-pointer"
+            className="px-3 py-1.5 bg-muted hover:bg-muted/80 text-foreground rounded-xl text-xs font-bold transition-colors cursor-pointer"
           >
             ↻ Refresh Statement
           </button>
           <button
             onClick={handlePrint}
-            className="px-4 py-2 bg-primary hover:bg-primary/90 text-white rounded-xl text-xs font-semibold transition-colors shadow-md shadow-primary/20 cursor-pointer"
+            className="px-4 py-2 bg-primary hover:bg-primary/90 text-white rounded-xl text-xs font-bold transition-colors shadow-md shadow-primary/20 cursor-pointer"
           >
             🖨️ Export / Print Report
           </button>
@@ -95,7 +95,7 @@ export default function RevenueReports() {
       {/* KPI Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
         <div className="bg-card border border-border rounded-2xl p-5 shadow-sm">
-          <span className="text-xs text-muted-foreground uppercase font-semibold">Gross Revenue</span>
+          <span className="text-xs text-muted-foreground uppercase font-bold">Gross Revenue</span>
           <p className="font-display font-black text-2xl text-foreground mt-2">
             ₹{report.total_revenue.toLocaleString()}
           </p>
@@ -103,23 +103,23 @@ export default function RevenueReports() {
         </div>
 
         <div className="bg-card border border-border rounded-2xl p-5 shadow-sm">
-          <span className="text-xs text-muted-foreground uppercase font-semibold">Maintenance & Repairs</span>
-          <p className="font-display font-black text-2xl text-amber-400 mt-2">
+          <span className="text-xs text-muted-foreground uppercase font-bold">Maintenance & Repairs</span>
+          <p className="font-display font-black text-2xl text-amber-600 mt-2">
             ₹{report.maintenance_cost.toLocaleString()}
           </p>
           <p className="text-[11px] text-muted-foreground mt-1">Fleet servicing & workshop upkeep</p>
         </div>
 
         <div className="bg-card border border-border rounded-2xl p-5 shadow-sm">
-          <span className="text-xs text-muted-foreground uppercase font-semibold">Net Operating Income</span>
-          <p className="font-display font-black text-2xl text-emerald-400 mt-2">
+          <span className="text-xs text-muted-foreground uppercase font-bold">Net Operating Income</span>
+          <p className="font-display font-black text-2xl text-emerald-600 mt-2">
             ₹{report.net_revenue.toLocaleString()}
           </p>
           <p className="text-[11px] text-muted-foreground mt-1">Net gross margin after repairs</p>
         </div>
 
         <div className="bg-card border border-border rounded-2xl p-5 shadow-sm">
-          <span className="text-xs text-muted-foreground uppercase font-semibold">Current Month</span>
+          <span className="text-xs text-muted-foreground uppercase font-bold">Current Month</span>
           <p className="font-display font-black text-2xl text-primary mt-2">
             ₹{report.monthly_revenue.toLocaleString()}
           </p>
@@ -182,8 +182,8 @@ export default function RevenueReports() {
 
             <div className="space-y-3 text-xs">
               <div className="flex justify-between p-3 bg-muted/40 rounded-xl border border-border">
-                <span className="text-muted-foreground">Operating Profit Margin</span>
-                <span className="font-bold text-emerald-400">
+                <span className="text-muted-foreground font-bold">Operating Profit Margin</span>
+                <span className="font-bold text-emerald-600">
                   {report.total_revenue > 0
                     ? `${((report.net_revenue / report.total_revenue) * 100).toFixed(1)}%`
                     : '100%'}
@@ -191,8 +191,8 @@ export default function RevenueReports() {
               </div>
 
               <div className="flex justify-between p-3 bg-muted/40 rounded-xl border border-border">
-                <span className="text-muted-foreground">Fleet Maintenance Ratio</span>
-                <span className="font-bold text-amber-400">
+                <span className="text-muted-foreground font-bold">Fleet Maintenance Ratio</span>
+                <span className="font-bold text-amber-600">
                   {report.total_revenue > 0
                     ? `${((report.maintenance_cost / report.total_revenue) * 100).toFixed(1)}%`
                     : '0.0%'}
@@ -200,7 +200,7 @@ export default function RevenueReports() {
               </div>
 
               <div className="flex justify-between p-3 bg-muted/40 rounded-xl border border-border">
-                <span className="text-muted-foreground">Average Monthly Inflow</span>
+                <span className="text-muted-foreground font-bold">Average Monthly Inflow</span>
                 <span className="font-display font-bold text-foreground">
                   ₹{Math.round(report.total_revenue / 12).toLocaleString()} / mo
                 </span>
@@ -224,7 +224,7 @@ export default function RevenueReports() {
         <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse text-xs">
             <thead>
-              <tr className="border-b border-border bg-muted/50 text-muted-foreground font-semibold">
+              <tr className="border-b border-border bg-muted/50 text-muted-foreground font-bold">
                 <th className="py-3 px-4">Period</th>
                 <th className="py-3 px-4">Month Name</th>
                 <th className="py-3 px-4">Total Billings</th>
@@ -235,12 +235,12 @@ export default function RevenueReports() {
             <tbody className="divide-y divide-border">
               {report.monthly_trend.map(item => (
                 <tr key={item.month} className="hover:bg-muted/30 transition-colors">
-                  <td className="py-3 px-4 font-mono text-muted-foreground">{item.month}</td>
+                  <td className="py-3 px-4 font-mono font-bold text-muted-foreground">{item.month}</td>
                   <td className="py-3 px-4 font-bold text-foreground">{item.month_name}</td>
                   <td className="py-3 px-4 font-display font-bold text-foreground">
                     ₹{item.amount.toLocaleString()}
                   </td>
-                  <td className="py-3 px-4 text-muted-foreground font-mono">
+                  <td className="py-3 px-4 text-muted-foreground font-mono font-bold">
                     {report.total_revenue > 0 ? `${((item.amount / report.total_revenue) * 100).toFixed(1)}%` : '0%'}
                   </td>
                   <td className="py-3 px-4 text-right">

@@ -63,7 +63,7 @@ export default function AdminLayout() {
   return (
     <div className="min-h-screen bg-background text-foreground flex flex-col">
       {/* Top Admin Navigation Header */}
-      <header className="sticky top-0 z-50 bg-[#090909]/95 backdrop-blur-md border-b border-border">
+      <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-border shadow-xs">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="flex items-center justify-between h-16">
             {/* Logo + Admin Tag */}
@@ -76,7 +76,7 @@ export default function AdminLayout() {
                   Drive<span className="text-primary">Now</span>
                 </span>
               </Link>
-              <span className="px-2 py-0.5 bg-primary/10 text-primary border border-primary/20 rounded-md text-[11px] font-semibold tracking-wide">
+              <span className="px-2 py-0.5 bg-primary/10 text-primary border border-primary/20 rounded-md text-[11px] font-bold tracking-wide">
                 Admin Console
               </span>
             </div>
@@ -87,7 +87,7 @@ export default function AdminLayout() {
                 <Link
                   key={item.path}
                   to={item.path}
-                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-colors ${
+                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-colors ${
                     isActive(item.path)
                       ? 'bg-primary text-white shadow-sm'
                       : 'text-muted-foreground hover:text-foreground hover:bg-muted'
@@ -104,7 +104,7 @@ export default function AdminLayout() {
               {/* API Status */}
               <div className="hidden sm:flex items-center gap-1.5 px-2.5 py-1 bg-muted rounded-full border border-border text-[11px]">
                 <span className={`w-2 h-2 rounded-full ${isApiHealthy ? 'bg-emerald-400 animate-pulse' : 'bg-amber-400'}`} />
-                <span className="text-muted-foreground">
+                <span className="text-muted-foreground font-bold">
                   {isApiHealthy ? 'Backend Live' : 'Connecting...'}
                 </span>
               </div>
@@ -115,7 +115,7 @@ export default function AdminLayout() {
                   A
                 </div>
                 <div className="text-left">
-                  <p className="text-xs font-semibold text-foreground leading-none">{adminUser?.name || 'Admin'}</p>
+                  <p className="text-xs font-bold text-foreground leading-none">{adminUser?.name || 'Admin'}</p>
                   <p className="text-[10px] text-muted-foreground">{adminUser?.email || 'admin@drivenow.com'}</p>
                 </div>
               </div>
@@ -123,7 +123,7 @@ export default function AdminLayout() {
               {/* Logout Button */}
               <button
                 onClick={handleLogout}
-                className="px-3 py-1.5 bg-red-400/10 hover:bg-red-400/20 text-red-400 border border-red-400/20 rounded-lg text-xs font-semibold transition-colors cursor-pointer"
+                className="px-3 py-1.5 bg-red-50 hover:bg-red-100 text-red-600 border border-red-200 rounded-lg text-xs font-bold transition-colors cursor-pointer"
                 title="Sign Out of Admin Console"
               >
                 Sign Out
@@ -149,7 +149,7 @@ export default function AdminLayout() {
                   key={item.path}
                   to={item.path}
                   onClick={() => setMobileMenuOpen(false)}
-                  className={`flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
+                  className={`flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-bold transition-colors ${
                     isActive(item.path)
                       ? 'bg-primary text-white'
                       : 'text-muted-foreground hover:bg-muted'
@@ -161,7 +161,7 @@ export default function AdminLayout() {
               ))}
               <button
                 onClick={handleLogout}
-                className="text-left px-3 py-2 rounded-lg text-sm font-medium text-red-400 hover:bg-red-400/10 mt-2 border-t border-border pt-2 cursor-pointer"
+                className="text-left px-3 py-2 rounded-lg text-sm font-bold text-red-600 hover:bg-red-50 mt-2 border-t border-border pt-2 cursor-pointer"
               >
                 Sign Out
               </button>
@@ -176,7 +176,7 @@ export default function AdminLayout() {
       </main>
 
       {/* Admin Footer */}
-      <footer className="border-t border-border py-4 bg-[#090909]">
+      <footer className="border-t border-border py-4 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between text-xs text-muted-foreground gap-2">
           <p>© 2026 DriveNow Admin Portal · Dedicated Management System</p>
           <p>College Project Demonstration · Predefined Superadmin Access</p>

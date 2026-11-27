@@ -202,7 +202,7 @@ export default function CarManagement() {
             resetForm();
             setShowAddModal(true);
           }}
-          className="px-4 py-2 bg-primary hover:bg-primary/90 text-white rounded-xl text-xs font-semibold transition-colors shadow-md shadow-primary/20 cursor-pointer"
+          className="px-4 py-2 bg-primary hover:bg-primary/90 text-white rounded-xl text-xs font-bold transition-colors shadow-md shadow-primary/20 cursor-pointer"
         >
           + Add New Vehicle
         </button>
@@ -213,8 +213,8 @@ export default function CarManagement() {
         <div
           className={`p-3.5 rounded-xl border text-xs font-medium flex items-center justify-between transition-all animate-in fade-in slide-in-from-top-2 ${
             actionNotice.type === 'success'
-              ? 'bg-emerald-500/10 border-emerald-500/25 text-emerald-400'
-              : 'bg-red-500/10 border-red-500/25 text-red-400'
+              ? 'bg-emerald-50 border-emerald-200 text-emerald-700'
+              : 'bg-red-50 border-red-200 text-red-600'
           }`}
         >
           <div className="flex items-center gap-2">
@@ -247,7 +247,7 @@ export default function CarManagement() {
             <button
               key={t}
               onClick={() => setSelectedType(t)}
-              className={`px-3 py-1.5 rounded-lg text-xs font-semibold capitalize whitespace-nowrap transition-colors cursor-pointer ${
+              className={`px-3 py-1.5 rounded-lg text-xs font-bold capitalize whitespace-nowrap transition-colors cursor-pointer ${
                 selectedType === t
                   ? 'bg-primary text-white shadow-sm'
                   : 'bg-muted text-muted-foreground hover:text-foreground'
@@ -266,7 +266,7 @@ export default function CarManagement() {
           Loading fleet catalog...
         </div>
       ) : error ? (
-        <div className="p-4 bg-red-400/10 border border-red-400/30 rounded-xl text-red-400 text-xs">
+        <div className="p-4 bg-red-50 border border-red-200 rounded-xl text-red-600 text-xs">
           {error}
         </div>
       ) : filteredCars.length === 0 ? (
@@ -278,7 +278,7 @@ export default function CarManagement() {
           <div className="overflow-x-auto">
             <table className="w-full text-left border-collapse text-xs">
               <thead>
-                <tr className="border-b border-border bg-muted/50 text-muted-foreground font-semibold">
+                <tr className="border-b border-border bg-muted/50 text-muted-foreground font-bold">
                   <th className="py-3.5 px-4">Vehicle</th>
                   <th className="py-3.5 px-4">Category</th>
                   <th className="py-3.5 px-4">Plate No.</th>
@@ -305,11 +305,11 @@ export default function CarManagement() {
                       </div>
                     </td>
 
-                    <td className="py-3.5 px-4 font-medium uppercase text-[11px] text-muted-foreground">
+                    <td className="py-3.5 px-4 font-bold uppercase text-[11px] text-muted-foreground">
                       {car.type}
                     </td>
 
-                    <td className="py-3.5 px-4 font-mono font-semibold text-foreground">
+                    <td className="py-3.5 px-4 font-mono font-bold text-foreground">
                       {car.license_plate || 'MH-02-DN-0001'}
                     </td>
 
@@ -324,10 +324,10 @@ export default function CarManagement() {
                     <td className="py-3.5 px-4 text-center">
                       <button
                         onClick={() => handleToggleAvailability(car)}
-                        className={`px-3 py-1 rounded-full text-[11px] font-semibold transition-colors cursor-pointer ${
+                        className={`px-3 py-1 rounded-full text-[11px] font-bold transition-colors cursor-pointer ${
                           car.available
-                            ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 hover:bg-emerald-500/20'
-                            : 'bg-red-500/10 text-red-400 border border-red-500/30 hover:bg-red-500/20'
+                            ? 'bg-emerald-50 text-emerald-700 border border-emerald-200 hover:bg-emerald-100'
+                            : 'bg-red-50 text-red-600 border border-red-200 hover:bg-red-100'
                         }`}
                       >
                         {car.available ? 'Available' : 'Unavailable'}
@@ -340,7 +340,7 @@ export default function CarManagement() {
                           setDeleteError(null);
                           setCarToDelete(car);
                         }}
-                        className="px-2.5 py-1 text-red-400 hover:bg-red-400/10 rounded-lg transition-colors cursor-pointer"
+                        className="px-2.5 py-1 text-red-600 font-bold hover:bg-red-50 rounded-lg transition-colors cursor-pointer"
                         title="Decommission vehicle"
                       >
                         Delete
@@ -356,7 +356,7 @@ export default function CarManagement() {
 
       {/* Add Vehicle Modal */}
       {showAddModal && (
-        <div className="fixed inset-0 z-50 bg-black/75 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto">
+        <div className="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto">
           <div className="bg-card border border-border rounded-2xl max-w-xl w-full p-6 shadow-2xl my-8 animate-in fade-in zoom-in-95">
             <div className="flex items-center justify-between border-b border-border pb-4 mb-4">
               <div>
@@ -372,7 +372,7 @@ export default function CarManagement() {
             </div>
 
             {formError && (
-              <div className="mb-4 p-3 bg-red-400/10 border border-red-400/30 rounded-xl text-red-400 text-xs font-medium">
+              <div className="mb-4 p-3 bg-red-50 border border-red-200 rounded-xl text-red-600 text-xs font-medium">
                 {formError}
               </div>
             )}
@@ -380,7 +380,7 @@ export default function CarManagement() {
             <form onSubmit={handleAddCar} className="space-y-4 text-xs">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
-                  <label className="block font-semibold uppercase tracking-wider mb-1 text-foreground">
+                  <label className="block font-bold uppercase tracking-wider mb-1 text-foreground">
                     Vehicle Model Name *
                   </label>
                   <input
@@ -394,7 +394,7 @@ export default function CarManagement() {
                 </div>
 
                 <div>
-                  <label className="block font-semibold uppercase tracking-wider mb-1 text-foreground">
+                  <label className="block font-bold uppercase tracking-wider mb-1 text-foreground">
                     License Plate *
                   </label>
                   <input
@@ -410,7 +410,7 @@ export default function CarManagement() {
 
               <div className="grid grid-cols-3 gap-3">
                 <div>
-                  <label className="block font-semibold uppercase tracking-wider mb-1 text-foreground">Category</label>
+                  <label className="block font-bold uppercase tracking-wider mb-1 text-foreground">Category</label>
                   <select
                     value={type}
                     onChange={e => setType(e.target.value)}
@@ -426,7 +426,7 @@ export default function CarManagement() {
                 </div>
 
                 <div>
-                  <label className="block font-semibold uppercase tracking-wider mb-1 text-foreground">Seats</label>
+                  <label className="block font-bold uppercase tracking-wider mb-1 text-foreground">Seats</label>
                   <input
                     type="number"
                     value={seats}
@@ -438,7 +438,7 @@ export default function CarManagement() {
                 </div>
 
                 <div>
-                  <label className="block font-semibold uppercase tracking-wider mb-1 text-foreground">Model Year</label>
+                  <label className="block font-bold uppercase tracking-wider mb-1 text-foreground">Model Year</label>
                   <input
                     type="number"
                     value={year}
@@ -450,7 +450,7 @@ export default function CarManagement() {
 
               <div className="grid grid-cols-3 gap-3">
                 <div>
-                  <label className="block font-semibold uppercase tracking-wider mb-1 text-foreground">Transmission</label>
+                  <label className="block font-bold uppercase tracking-wider mb-1 text-foreground">Transmission</label>
                   <select
                     value={transmission}
                     onChange={e => setTransmission(e.target.value)}
@@ -462,7 +462,7 @@ export default function CarManagement() {
                 </div>
 
                 <div>
-                  <label className="block font-semibold uppercase tracking-wider mb-1 text-foreground">Fuel</label>
+                  <label className="block font-bold uppercase tracking-wider mb-1 text-foreground">Fuel</label>
                   <select
                     value={fuel}
                     onChange={e => setFuel(e.target.value)}
@@ -476,7 +476,7 @@ export default function CarManagement() {
                 </div>
 
                 <div>
-                  <label className="block font-semibold uppercase tracking-wider mb-1 text-foreground">Mileage</label>
+                  <label className="block font-bold uppercase tracking-wider mb-1 text-foreground">Mileage</label>
                   <input
                     type="text"
                     value={mileage}
@@ -489,7 +489,7 @@ export default function CarManagement() {
 
               <div className="grid grid-cols-3 gap-3">
                 <div>
-                  <label className="block font-semibold uppercase tracking-wider mb-1 text-foreground">Hourly Rate (₹)</label>
+                  <label className="block font-bold uppercase tracking-wider mb-1 text-foreground">Hourly Rate (₹)</label>
                   <input
                     type="number"
                     value={priceHourly}
@@ -499,7 +499,7 @@ export default function CarManagement() {
                 </div>
 
                 <div>
-                  <label className="block font-semibold uppercase tracking-wider mb-1 text-foreground">Daily Rate (₹)</label>
+                  <label className="block font-bold uppercase tracking-wider mb-1 text-foreground">Daily Rate (₹)</label>
                   <input
                     type="number"
                     value={priceDaily}
@@ -509,7 +509,7 @@ export default function CarManagement() {
                 </div>
 
                 <div>
-                  <label className="block font-semibold uppercase tracking-wider mb-1 text-foreground">Weekly Rate (₹)</label>
+                  <label className="block font-bold uppercase tracking-wider mb-1 text-foreground">Weekly Rate (₹)</label>
                   <input
                     type="number"
                     value={priceWeekly}
@@ -521,7 +521,7 @@ export default function CarManagement() {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
-                  <label className="block font-semibold uppercase tracking-wider mb-1 text-foreground">Color</label>
+                  <label className="block font-bold uppercase tracking-wider mb-1 text-foreground">Color</label>
                   <input
                     type="text"
                     value={color}
@@ -531,7 +531,7 @@ export default function CarManagement() {
                   />
                 </div>
                 <div>
-                  <label className="block font-semibold uppercase tracking-wider mb-1 text-foreground">Image URL</label>
+                  <label className="block font-bold uppercase tracking-wider mb-1 text-foreground">Image URL</label>
                   <input
                     type="url"
                     value={image}
@@ -546,14 +546,14 @@ export default function CarManagement() {
                 <button
                   type="button"
                   onClick={() => setShowAddModal(false)}
-                  className="px-4 py-2 bg-muted text-muted-foreground rounded-xl hover:text-foreground cursor-pointer"
+                  className="px-4 py-2 bg-muted text-muted-foreground font-bold rounded-xl hover:text-foreground cursor-pointer"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
                   disabled={submitting}
-                  className="px-5 py-2 bg-primary text-white font-semibold rounded-xl hover:bg-primary/90 transition-colors disabled:opacity-50 cursor-pointer shadow-md shadow-primary/20"
+                  className="px-5 py-2 bg-primary text-white font-bold rounded-xl hover:bg-primary/90 transition-colors disabled:opacity-50 cursor-pointer shadow-md shadow-primary/20"
                 >
                   {submitting ? 'Adding...' : 'Commission Vehicle'}
                 </button>

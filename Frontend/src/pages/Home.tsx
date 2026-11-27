@@ -37,14 +37,14 @@ export default function Home() {
           <img
             src="https://images.unsplash.com/photo-1601362840469-51e4d8d58785?w=1600&h=700&fit=crop&auto=format"
             alt="Premium car on road"
-            className="w-full h-full object-cover opacity-30"
+            className="w-full h-full object-cover opacity-25"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-background via-background/80 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-background via-background/85 to-background/20" />
         </div>
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 py-20 grid md:grid-cols-2 gap-12 items-center">
           <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 bg-primary/10 border border-primary/20 rounded-full text-primary text-xs font-medium mb-6">
+            <div className="inline-flex items-center gap-2 px-3 py-1 bg-primary/10 border border-primary/20 rounded-full text-primary text-xs font-bold mb-6">
               <span className="w-1.5 h-1.5 bg-primary rounded-full animate-pulse" />
               {cars.filter(c => c.available).length} Cars Available Now
             </div>
@@ -59,13 +59,13 @@ export default function Home() {
             <div className="flex gap-4">
               <button
                 onClick={() => navigate('/cars')}
-                className="px-6 py-3 bg-primary text-white font-display font-semibold rounded-xl hover:bg-primary/90 transition-colors shadow-lg shadow-primary/25 cursor-pointer"
+                className="px-6 py-3 bg-primary text-white font-display font-bold rounded-xl hover:bg-primary/90 transition-colors shadow-lg shadow-primary/25 cursor-pointer"
               >
                 Explore Fleet
               </button>
               <button
                 onClick={() => navigate('/trip-planner')}
-                className="px-6 py-3 bg-muted border border-border text-foreground font-display font-semibold rounded-xl hover:bg-secondary transition-colors cursor-pointer"
+                className="px-6 py-3 bg-muted border border-border text-foreground font-display font-bold rounded-xl hover:bg-secondary transition-colors cursor-pointer"
               >
                 AI Trip Planner
               </button>
@@ -100,7 +100,7 @@ export default function Home() {
 
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="text-xs text-muted-foreground mb-1 block">Pick-up Date</label>
+                  <label className="text-xs font-bold text-muted-foreground mb-1 block">Pick-up Date</label>
                   <input
                     type="date"
                     value={date}
@@ -109,7 +109,7 @@ export default function Home() {
                   />
                 </div>
                 <div>
-                  <label className="text-xs text-muted-foreground mb-1 block">Time</label>
+                  <label className="text-xs font-bold text-muted-foreground mb-1 block">Time</label>
                   <input
                     type="time"
                     defaultValue="10:00"
@@ -120,7 +120,7 @@ export default function Home() {
 
               <button
                 type="submit"
-                className="w-full py-3.5 bg-primary text-white font-display font-semibold rounded-xl hover:bg-primary/90 transition-colors text-sm shadow-md shadow-primary/20 cursor-pointer"
+                className="w-full py-3.5 bg-primary text-white font-display font-bold rounded-xl hover:bg-primary/90 transition-colors text-sm shadow-md shadow-primary/20 cursor-pointer"
               >
                 Search Available Cars
               </button>
@@ -138,7 +138,7 @@ export default function Home() {
           </div>
           <button
             onClick={() => navigate('/cars')}
-            className="text-primary text-sm font-semibold hover:underline"
+            className="text-primary text-sm font-bold hover:underline"
           >
             View all →
           </button>
@@ -155,8 +155,8 @@ export default function Home() {
                 <div className="text-3xl mb-2 group-hover:scale-110 transition-transform">
                   {categoryIcons[cat]}
                 </div>
-                <p className="font-display font-semibold text-sm text-foreground">{cat}</p>
-                <p className="text-muted-foreground text-xs mt-0.5">{count} models</p>
+                <p className="font-display font-bold text-sm text-foreground">{cat}</p>
+                <p className="text-muted-foreground text-xs font-bold mt-0.5">{count} models</p>
               </button>
             );
           })}
@@ -172,7 +172,7 @@ export default function Home() {
           </div>
           <button
             onClick={() => navigate('/cars')}
-            className="text-primary text-sm font-semibold hover:underline"
+            className="text-primary text-sm font-bold hover:underline"
           >
             Browse all cars →
           </button>
@@ -202,15 +202,15 @@ export default function Home() {
                   <p className="text-muted-foreground text-xs">{offer.description}</p>
                 </div>
                 <div className="mt-4 pt-3 border-t border-border flex items-center justify-between text-[11px] text-muted-foreground">
-                  <span>Min ₹{offer.minAmount}</span>
+                  <span className="font-bold">Min ₹{offer.minAmount}</span>
                   <button
                     onClick={() => {
                       navigator.clipboard.writeText(offer.code);
                       setCopiedCode(offer.code);
                       setTimeout(() => setCopiedCode(null), 2500);
                     }}
-                    className={`font-semibold cursor-pointer transition-colors ${
-                      copiedCode === offer.code ? 'text-emerald-400 font-bold' : 'text-primary hover:underline'
+                    className={`font-bold cursor-pointer transition-colors ${
+                      copiedCode === offer.code ? 'text-emerald-600 font-bold' : 'text-primary hover:underline'
                     }`}
                   >
                     {copiedCode === offer.code ? '✓ Copied!' : 'Copy Code'}

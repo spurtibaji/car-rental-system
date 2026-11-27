@@ -188,7 +188,7 @@ export default function LocationCombobox({
     <div ref={containerRef} className={`relative space-y-1 ${className}`}>
       {/* Label & Status Badge Bar */}
       <div className="flex items-center justify-between gap-2">
-        <label htmlFor={inputId} className="text-xs font-semibold text-foreground flex items-center gap-1.5">
+        <label htmlFor={inputId} className="text-xs font-bold text-foreground flex items-center gap-1.5">
           <span>{label}</span>
           {required && <span className="text-primary">*</span>}
         </label>
@@ -199,9 +199,9 @@ export default function LocationCombobox({
             <button
               type="button"
               onClick={() => onChange('')}
-              className={`text-[11px] px-2 py-0.5 rounded-full border transition-colors cursor-pointer ${
+              className={`text-[11px] font-bold px-2 py-0.5 rounded-full border transition-colors cursor-pointer ${
                 isSameAsPickup
-                  ? 'bg-primary/15 border-primary/40 text-primary font-medium'
+                  ? 'bg-primary/15 border-primary/40 text-primary font-bold'
                   : 'bg-muted/80 border-border text-muted-foreground hover:text-foreground hover:bg-muted'
               }`}
               title="Set drop-off to match pick-up location"
@@ -212,14 +212,14 @@ export default function LocationCombobox({
 
           {/* Status Badge */}
           {isOfficialHub && (
-            <span className="inline-flex items-center gap-1 text-[10px] font-medium text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-2 py-0.5 rounded-full">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+            <span className="inline-flex items-center gap-1 text-[10px] font-bold text-emerald-700 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded-full">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>
               Official Hub
             </span>
           )}
           {isCustomAddress && (
-            <span className="inline-flex items-center gap-1 text-[10px] font-medium text-amber-400 bg-amber-500/10 border border-amber-500/20 px-2 py-0.5 rounded-full">
-              <span className="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
+            <span className="inline-flex items-center gap-1 text-[10px] font-bold text-amber-700 bg-amber-50 border border-amber-200 px-2 py-0.5 rounded-full">
+              <span className="w-1.5 h-1.5 rounded-full bg-amber-600"></span>
               Custom Address
             </span>
           )}
@@ -320,9 +320,9 @@ export default function LocationCombobox({
 
       {/* Floating Suggestions Dropdown */}
       {isOpen && (
-        <div className="absolute left-0 right-0 top-full mt-1.5 z-50 bg-[#141414] border border-border/80 rounded-xl shadow-2xl overflow-hidden backdrop-blur-xl max-h-80 overflow-y-auto">
+        <div className="absolute left-0 right-0 top-full mt-1.5 z-50 bg-white border border-border rounded-xl shadow-2xl overflow-hidden max-h-80 overflow-y-auto">
           {/* Quick Notice Header with Hub Count */}
-          <div className="px-3.5 py-2 bg-muted/50 border-b border-border/60 flex items-center justify-between text-[11px] text-muted-foreground font-medium sticky top-0 bg-[#161616] z-10">
+          <div className="px-3.5 py-2 border-b border-border flex items-center justify-between text-[11px] text-muted-foreground font-bold sticky top-0 bg-gray-50 z-10">
             <span>
               {shouldShowAll
                 ? `All Available Hubs (${suggestions.length} options)`
@@ -332,7 +332,7 @@ export default function LocationCombobox({
               <button
                 type="button"
                 onClick={() => setShowAllHubs(true)}
-                className="text-[10px] text-primary hover:underline font-semibold cursor-pointer"
+                className="text-[10px] text-primary hover:underline font-bold cursor-pointer"
               >
                 Show all {suggestions.length} hubs
               </button>
@@ -345,9 +345,9 @@ export default function LocationCombobox({
               <button
                 type="button"
                 onClick={() => handleSelect('')}
-                className={`w-full text-left px-3 py-2.5 rounded-lg flex items-center justify-between text-xs transition-colors cursor-pointer ${
+                className={`w-full text-left px-3 py-2.5 rounded-lg flex items-center justify-between text-xs font-bold transition-colors cursor-pointer ${
                   isSameAsPickup
-                    ? 'bg-primary/15 text-primary font-semibold'
+                    ? 'bg-primary/15 text-primary'
                     : 'text-foreground hover:bg-muted/80'
                 }`}
               >
@@ -356,8 +356,8 @@ export default function LocationCombobox({
                     ↺
                   </div>
                   <div className="truncate">
-                    <p className="font-medium text-foreground">Same as pick-up</p>
-                    <p className="text-[11px] text-muted-foreground truncate">
+                    <p className="font-bold text-foreground">Same as pick-up</p>
+                    <p className="text-[11px] font-normal text-muted-foreground truncate">
                       {pickupReference || 'Return to the same hub as pick-up'}
                     </p>
                   </div>
@@ -373,22 +373,22 @@ export default function LocationCombobox({
               <button
                 type="button"
                 onClick={() => handleSelect(trimmedValue)}
-                className="w-full text-left px-3 py-2.5 rounded-lg flex items-center justify-between text-xs bg-amber-500/10 hover:bg-amber-500/15 border border-amber-500/30 transition-colors cursor-pointer"
+                className="w-full text-left px-3 py-2.5 rounded-lg flex items-center justify-between text-xs bg-amber-50 hover:bg-amber-100/80 border border-amber-200 transition-colors cursor-pointer"
               >
                 <div className="flex items-center gap-2.5 min-w-0">
-                  <div className="w-6 h-6 rounded-md bg-amber-500/20 text-amber-400 flex items-center justify-center shrink-0 text-xs">
+                  <div className="w-6 h-6 rounded-md bg-amber-100 text-amber-700 flex items-center justify-center shrink-0 text-xs">
                     🏠
                   </div>
                   <div className="truncate">
-                    <p className="font-semibold text-amber-300 truncate">
+                    <p className="font-bold text-amber-800 truncate">
                       Use custom address: &ldquo;{trimmedValue}&rdquo;
                     </p>
-                    <p className="text-[10px] text-amber-200/70">
+                    <p className="text-[10px] text-amber-700/80">
                       Doorstep delivery & pickup at this custom location
                     </p>
                   </div>
                 </div>
-                <span className="text-[10px] text-amber-400 uppercase font-bold tracking-wider px-1.5 py-0.5 bg-amber-500/20 rounded shrink-0">
+                <span className="text-[10px] text-amber-700 uppercase font-bold tracking-wider px-1.5 py-0.5 bg-amber-100 rounded shrink-0">
                   Custom
                 </span>
               </button>
@@ -398,7 +398,7 @@ export default function LocationCombobox({
             {filteredSuggestions.length > 0 && (
               <div className="px-3 pt-2 pb-1 text-[10px] font-bold text-muted-foreground uppercase tracking-wider flex items-center justify-between">
                 <span>DriveNow Hubs & Branches ({filteredSuggestions.length})</span>
-                <span className="text-[9px] text-muted-foreground font-normal">Select any hub below</span>
+                <span className="text-[9px] text-muted-foreground font-bold">Select any hub below</span>
               </div>
             )}
 
@@ -412,9 +412,9 @@ export default function LocationCombobox({
                   ref={isSelected ? selectedItemRef : undefined}
                   type="button"
                   onClick={() => handleSelect(hub)}
-                  className={`w-full text-left px-3 py-2.5 rounded-lg flex items-center justify-between text-xs transition-colors cursor-pointer ${
+                  className={`w-full text-left px-3 py-2.5 rounded-lg flex items-center justify-between text-xs font-bold transition-colors cursor-pointer ${
                     isSelected
-                      ? 'bg-primary/15 text-primary font-semibold border border-primary/30'
+                      ? 'bg-primary/15 text-primary border border-primary/30'
                       : 'text-foreground hover:bg-muted/80'
                   }`}
                 >
@@ -426,10 +426,10 @@ export default function LocationCombobox({
                         <path strokeLinecap="round" strokeLinejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
                       </svg>
                     </div>
-                    <span className="truncate">{hub}</span>
+                    <span className="truncate font-bold">{hub}</span>
                   </div>
                   <div className="flex items-center gap-1.5 shrink-0 ml-2">
-                    <span className="text-[10px] text-muted-foreground/70 bg-muted px-1.5 py-0.5 rounded border border-border/50">
+                    <span className="text-[10px] font-bold text-muted-foreground/70 bg-muted px-1.5 py-0.5 rounded border border-border/50">
                       {tag}
                     </span>
                     {isSelected && (
@@ -445,12 +445,12 @@ export default function LocationCombobox({
               <div className="p-4 text-center text-xs text-muted-foreground space-y-2">
                 <p>No hub matching &ldquo;{trimmedValue}&rdquo;.</p>
                 <p className="text-[11px] text-foreground">
-                  You can proceed with this as your <span className="text-amber-400 font-medium">custom location</span>.
+                  You can proceed with this as your <span className="text-amber-600 font-bold">custom location</span>.
                 </p>
                 <button
                   type="button"
                   onClick={() => setShowAllHubs(true)}
-                  className="px-3 py-1 bg-muted hover:bg-secondary text-primary rounded-lg text-xs font-medium cursor-pointer"
+                  className="px-3 py-1 bg-muted hover:bg-secondary text-primary rounded-lg text-xs font-bold cursor-pointer"
                 >
                   Browse all {suggestions.length} hubs
                 </button>

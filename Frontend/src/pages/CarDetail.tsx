@@ -24,7 +24,7 @@ export default function CarDetail() {
       <div className="max-w-md mx-auto px-4 py-24 text-center">
         <h2 className="font-display font-bold text-xl text-foreground mb-2">Vehicle Not Found</h2>
         <p className="text-muted-foreground text-xs mb-6">The requested car does not exist in our fleet.</p>
-        <Link to="/cars" className="px-5 py-2.5 bg-primary text-white text-xs font-semibold rounded-xl">
+        <Link to="/cars" className="px-5 py-2.5 bg-primary text-white text-xs font-bold rounded-xl">
           Back to Cars
         </Link>
       </div>
@@ -64,12 +64,12 @@ export default function CarDetail() {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 py-8">
       {/* Breadcrumb */}
-      <div className="flex items-center gap-2 text-xs text-muted-foreground mb-6">
+      <div className="flex items-center gap-2 text-xs font-bold text-muted-foreground mb-6">
         <Link to="/" className="hover:text-foreground">Home</Link>
         <span>/</span>
         <Link to="/cars" className="hover:text-foreground">Cars</Link>
         <span>/</span>
-        <span className="text-foreground font-medium">{car.name}</span>
+        <span className="text-foreground font-bold">{car.name}</span>
       </div>
 
       <div className="grid lg:grid-cols-3 gap-8">
@@ -83,10 +83,10 @@ export default function CarDetail() {
               className="w-full h-full object-cover"
             />
             <div className="absolute top-4 left-4">
-              <span className={`px-3 py-1 rounded-full text-xs font-semibold backdrop-blur-md ${
+              <span className={`px-3 py-1 rounded-full text-xs font-bold backdrop-blur-md shadow-sm ${
                 car.available
-                  ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30'
-                  : 'bg-amber-500/20 text-amber-400 border border-amber-500/30'
+                  ? 'bg-white/95 text-emerald-700 border border-emerald-500/30'
+                  : 'bg-white/95 text-amber-700 border border-amber-500/30'
               }`}>
                 {car.available ? '● Available for Rental' : '○ Currently Booked'}
               </span>
@@ -115,20 +115,20 @@ export default function CarDetail() {
             <h2 className="font-display font-bold text-lg text-foreground mb-4">Technical Specifications</h2>
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 text-xs">
               <div className="p-3 bg-muted rounded-xl">
-                <span className="text-muted-foreground block text-[11px]">Engine Capacity</span>
-                <span className="font-semibold text-foreground text-sm">{car.engineCC || 1493} CC</span>
+                <span className="text-muted-foreground font-bold block text-[11px]">Engine Capacity</span>
+                <span className="font-bold text-foreground text-sm">{car.engineCC || 1493} CC</span>
               </div>
               <div className="p-3 bg-muted rounded-xl">
-                <span className="text-muted-foreground block text-[11px]">Mileage</span>
-                <span className="font-semibold text-foreground text-sm">{car.mileage ? `${car.mileage} km/l` : 'Electric'}</span>
+                <span className="text-muted-foreground font-bold block text-[11px]">Mileage</span>
+                <span className="font-bold text-foreground text-sm">{car.mileage ? `${car.mileage} km/l` : 'Electric'}</span>
               </div>
               <div className="p-3 bg-muted rounded-xl">
-                <span className="text-muted-foreground block text-[11px]">Transmission</span>
-                <span className="font-semibold text-foreground text-sm">{car.transmission}</span>
+                <span className="text-muted-foreground font-bold block text-[11px]">Transmission</span>
+                <span className="font-bold text-foreground text-sm">{car.transmission}</span>
               </div>
               <div className="p-3 bg-muted rounded-xl">
-                <span className="text-muted-foreground block text-[11px]">Seating</span>
-                <span className="font-semibold text-foreground text-sm">{car.seats} Passengers</span>
+                <span className="text-muted-foreground font-bold block text-[11px]">Seating</span>
+                <span className="font-bold text-foreground text-sm">{car.seats} Passengers</span>
               </div>
             </div>
           </div>
@@ -140,8 +140,8 @@ export default function CarDetail() {
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 text-xs">
                 {car.features.map(feat => (
                   <div key={feat} className="flex items-center gap-2 p-2.5 bg-muted/40 rounded-xl border border-border/50">
-                    <span className="text-emerald-400">✓</span>
-                    <span className="text-foreground font-medium">{feat}</span>
+                    <span className="text-emerald-600 font-bold">✓</span>
+                    <span className="text-foreground font-bold">{feat}</span>
                   </div>
                 ))}
               </div>
@@ -155,7 +155,7 @@ export default function CarDetail() {
             <div className="mb-4">
               <span className="text-xs font-bold text-primary uppercase tracking-wider">{car.brand}</span>
               <h1 className="font-display font-black text-2xl text-foreground">{car.name}</h1>
-              <p className="text-muted-foreground text-xs">{car.category} · Model {car.year || 2024}</p>
+              <p className="text-muted-foreground text-xs font-bold">{car.category} · Model {car.year || 2024}</p>
             </div>
 
             {/* Rental Selection */}
@@ -173,7 +173,7 @@ export default function CarDetail() {
 
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="text-xs font-semibold text-foreground block mb-1">Start Date</label>
+                  <label className="text-xs font-bold text-foreground block mb-1">Start Date</label>
                   <input
                     type="date"
                     min={todayStr}
@@ -183,7 +183,7 @@ export default function CarDetail() {
                   />
                 </div>
                 <div>
-                  <label className="text-xs font-semibold text-foreground block mb-1">End Date</label>
+                  <label className="text-xs font-bold text-foreground block mb-1">End Date</label>
                   <input
                     type="date"
                     min={pickupDate}
@@ -197,11 +197,11 @@ export default function CarDetail() {
               {/* Rental Duration Summary */}
               <div className="flex items-center justify-between p-3 bg-muted/60 rounded-xl border border-border/50 text-xs">
                 <div>
-                  <span className="text-muted-foreground block text-[11px]">Rental Duration</span>
+                  <span className="text-muted-foreground font-bold block text-[11px]">Rental Duration</span>
                   <span className="font-bold text-foreground">{durationDays} Day{durationDays > 1 ? 's' : ''}</span>
                 </div>
                 <div className="text-right">
-                  <span className="text-muted-foreground block text-[11px]">Daily Rate</span>
+                  <span className="text-muted-foreground font-bold block text-[11px]">Daily Rate</span>
                   <span className="font-bold text-primary">₹{dailyRate.toLocaleString()}/day</span>
                 </div>
               </div>
@@ -209,7 +209,7 @@ export default function CarDetail() {
               {/* Driver Option */}
               <div className="flex items-center justify-between p-3 bg-muted rounded-xl">
                 <div>
-                  <p className="text-xs font-semibold text-foreground">Add Chauffeur / Driver</p>
+                  <p className="text-xs font-bold text-foreground">Add Chauffeur / Driver</p>
                   <p className="text-[10px] text-muted-foreground">+₹800 per day</p>
                 </div>
                 <input
@@ -222,12 +222,12 @@ export default function CarDetail() {
 
               {/* Price Calculation */}
               <div className="p-4 bg-muted/40 rounded-xl space-y-2 text-xs border border-border/60">
-                <div className="flex justify-between text-muted-foreground">
+                <div className="flex justify-between font-bold text-muted-foreground">
                   <span>Base Rental ({durationDays} day{durationDays > 1 ? 's' : ''})</span>
                   <span>₹{basePrice.toLocaleString()}</span>
                 </div>
                 {withDriver && (
-                  <div className="flex justify-between text-accent">
+                  <div className="flex justify-between font-bold text-accent">
                     <span>Driver Allowance</span>
                     <span>+₹{driverFee.toLocaleString()}</span>
                   </div>
@@ -241,7 +241,7 @@ export default function CarDetail() {
               <button
                 onClick={handleBookNow}
                 disabled={!car.available}
-                className="w-full py-3.5 bg-primary hover:bg-primary/90 text-white font-display font-semibold rounded-xl text-sm transition-colors shadow-lg shadow-primary/20 disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer"
+                className="w-full py-3.5 bg-primary hover:bg-primary/90 text-white font-display font-bold rounded-xl text-sm transition-colors shadow-lg shadow-primary/20 disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer"
               >
                 Proceed to Checkout
               </button>

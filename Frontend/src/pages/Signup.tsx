@@ -69,14 +69,14 @@ export default function Signup() {
         {/* Card Container */}
         <div className="bg-card border border-border rounded-2xl p-6 sm:p-8 shadow-xl">
           {error && (
-            <div className="mb-5 p-3.5 bg-red-400/10 border border-red-400/30 rounded-xl text-red-400 text-xs font-medium">
+            <div className="mb-5 p-3.5 bg-red-50 border border-red-200 rounded-xl text-red-600 text-xs font-medium">
               {error}
             </div>
           )}
 
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
-              <label className="block text-xs font-semibold text-foreground uppercase tracking-wider mb-1.5">
+              <label className="block text-xs font-bold text-foreground uppercase tracking-wider mb-1.5">
                 Full Name *
               </label>
               <input
@@ -90,7 +90,7 @@ export default function Signup() {
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-foreground uppercase tracking-wider mb-1.5">
+              <label className="block text-xs font-bold text-foreground uppercase tracking-wider mb-1.5">
                 Email Address *
               </label>
               <input
@@ -104,7 +104,7 @@ export default function Signup() {
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-foreground uppercase tracking-wider mb-1.5">
+              <label className="block text-xs font-bold text-foreground uppercase tracking-wider mb-1.5">
                 Phone Number *
               </label>
               <input
@@ -118,7 +118,7 @@ export default function Signup() {
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-foreground uppercase tracking-wider mb-1.5">
+              <label className="block text-xs font-bold text-foreground uppercase tracking-wider mb-1.5">
                 Password *
               </label>
               <input
@@ -132,7 +132,7 @@ export default function Signup() {
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-foreground uppercase tracking-wider mb-1.5">
+              <label className="block text-xs font-bold text-foreground uppercase tracking-wider mb-1.5">
                 Confirm Password *
               </label>
               <input
@@ -148,7 +148,7 @@ export default function Signup() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full py-3 bg-primary hover:bg-primary/90 text-white font-display font-semibold text-sm rounded-xl transition-colors disabled:opacity-50 mt-4 shadow-lg shadow-primary/20 cursor-pointer"
+              className="w-full py-3 bg-primary hover:bg-primary/90 text-white font-display font-bold text-sm rounded-xl transition-colors disabled:opacity-50 mt-4 shadow-lg shadow-primary/20 cursor-pointer"
             >
               {loading ? 'Creating Account...' : 'Create Customer Account'}
             </button>
@@ -159,7 +159,7 @@ export default function Signup() {
             <button
               type="button"
               onClick={handleQuickFill}
-              className="w-full py-2 px-3 bg-muted hover:bg-muted/80 border border-border rounded-xl text-xs font-medium text-foreground transition-colors flex items-center justify-center gap-2 cursor-pointer"
+              className="w-full py-2 px-3 bg-muted hover:bg-muted/80 border border-border rounded-xl text-xs font-bold text-foreground transition-colors flex items-center justify-center gap-2 cursor-pointer"
             >
               <span>⚡ Generate Random Test Data</span>
             </button>
@@ -168,7 +168,7 @@ export default function Signup() {
           {/* Login Link */}
           <p className="text-center text-xs text-muted-foreground mt-6">
             Already have an account?{' '}
-            <Link to="/login" className="text-primary hover:underline font-semibold">
+            <Link to="/login" className="text-primary hover:underline font-bold">
               Sign In
             </Link>
           </p>

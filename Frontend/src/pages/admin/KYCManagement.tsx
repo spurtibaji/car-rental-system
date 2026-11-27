@@ -130,7 +130,7 @@ export default function KYCManagement() {
 
         <button
           onClick={loadKYC}
-          className="px-3 py-1.5 bg-muted hover:bg-muted/80 text-foreground rounded-xl text-xs font-semibold transition-colors flex items-center gap-1.5 self-start sm:self-auto cursor-pointer"
+          className="px-3 py-1.5 bg-muted hover:bg-muted/80 text-foreground rounded-xl text-xs font-bold transition-colors flex items-center gap-1.5 self-start sm:self-auto cursor-pointer"
         >
           <span>↻</span>
           <span>Refresh Queue</span>
@@ -142,8 +142,8 @@ export default function KYCManagement() {
         <div
           className={`p-3.5 rounded-xl border text-xs font-medium flex items-center justify-between transition-all animate-in fade-in slide-in-from-top-2 ${
             actionNotice.type === 'success'
-              ? 'bg-emerald-500/10 border-emerald-500/25 text-emerald-400'
-              : 'bg-red-500/10 border-red-500/25 text-red-400'
+              ? 'bg-emerald-50 border-emerald-200 text-emerald-700'
+              : 'bg-red-50 border-red-200 text-red-600'
           }`}
         >
           <div className="flex items-center gap-2">
@@ -165,7 +165,7 @@ export default function KYCManagement() {
           <button
             key={tab}
             onClick={() => setFilter(tab)}
-            className={`px-3.5 py-1.5 rounded-xl text-xs font-semibold capitalize whitespace-nowrap transition-colors cursor-pointer flex items-center gap-1.5 ${
+            className={`px-3.5 py-1.5 rounded-xl text-xs font-bold capitalize whitespace-nowrap transition-colors cursor-pointer flex items-center gap-1.5 ${
               filter === tab
                 ? 'bg-primary text-white shadow-sm'
                 : 'bg-muted text-muted-foreground hover:text-foreground'
@@ -188,7 +188,7 @@ export default function KYCManagement() {
           Loading KYC verification applications...
         </div>
       ) : error ? (
-        <div className="p-4 bg-red-400/10 border border-red-400/30 rounded-xl text-red-400 text-xs">
+        <div className="p-4 bg-red-50 border border-red-200 rounded-xl text-red-600 text-xs">
           {error}
         </div>
       ) : filteredList.length === 0 ? (
@@ -212,12 +212,12 @@ export default function KYCManagement() {
                     <p className="text-xs text-muted-foreground">{u.email} · {u.phone || 'No phone'}</p>
                   </div>
                   <span
-                    className={`px-2.5 py-0.5 rounded-full text-[11px] font-semibold ${
+                    className={`px-2.5 py-0.5 rounded-full text-[11px] font-bold ${
                       u.kyc_status === 'verified'
-                        ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/30'
+                        ? 'bg-emerald-50 text-emerald-700 border border-emerald-200'
                         : u.kyc_status === 'rejected'
-                        ? 'bg-red-500/10 text-red-400 border border-red-500/30'
-                        : 'bg-amber-500/10 text-amber-400 border border-amber-500/30 animate-pulse'
+                        ? 'bg-red-50 text-red-600 border border-red-200'
+                        : 'bg-amber-50 text-amber-700 border border-amber-200 animate-pulse'
                     }`}
                   >
                     {u.kyc_status.toUpperCase()}
@@ -226,15 +226,15 @@ export default function KYCManagement() {
 
                 <div className="flex flex-wrap items-center gap-4 text-xs">
                   <div className="bg-muted px-3 py-1.5 rounded-xl border border-border">
-                    <span className="text-muted-foreground">Licence No: </span>
+                    <span className="text-muted-foreground font-bold">Licence No: </span>
                     <span className="font-mono font-bold text-foreground">
                       {u.licence_number || 'Not Submitted'}
                     </span>
                   </div>
 
                   <div className="bg-muted px-3 py-1.5 rounded-xl border border-border">
-                    <span className="text-muted-foreground">Files Attached: </span>
-                    <span className="font-semibold text-foreground">
+                    <span className="text-muted-foreground font-bold">Files Attached: </span>
+                    <span className="font-bold text-foreground">
                       {u.documents?.length || 0} document(s)
                     </span>
                   </div>
@@ -262,7 +262,7 @@ export default function KYCManagement() {
                             <div className="flex items-center gap-2 min-w-0 pr-2">
                               <span className="text-base shrink-0">{isDL ? '🪪' : isAadhaar ? '🆔' : '📄'}</span>
                               <div className="min-w-0">
-                                <p className="font-semibold text-foreground capitalize truncate">{docName}</p>
+                                <p className="font-bold text-foreground capitalize truncate">{docName}</p>
                                 <p className="text-[10px] text-muted-foreground truncate">
                                   {doc.file_name || (isPdf ? 'document.pdf' : 'document.jpg')}
                                   {doc.file_size ? ` · ${(doc.file_size / 1024).toFixed(0)} KB` : ''}
@@ -277,7 +277,7 @@ export default function KYCManagement() {
                                   setPreviewDoc(doc);
                                   setPreviewUser(u);
                                 }}
-                                className="px-2.5 py-1 bg-primary hover:bg-primary/90 text-white rounded-lg text-[11px] font-semibold transition-colors flex items-center gap-1 cursor-pointer shadow-sm"
+                                className="px-2.5 py-1 bg-primary hover:bg-primary/90 text-white rounded-lg text-[11px] font-bold transition-colors flex items-center gap-1 cursor-pointer shadow-sm"
                                 title="Inspect document"
                               >
                                 <span>👁️</span>
@@ -312,7 +312,7 @@ export default function KYCManagement() {
                   <button
                     disabled={reviewingId === u.user_id}
                     onClick={() => handleApprove(u.user_id)}
-                    className="px-4 py-2 bg-emerald-500 hover:bg-emerald-600 text-white font-semibold text-xs rounded-xl transition-colors disabled:opacity-50 cursor-pointer shadow-md shadow-emerald-500/20"
+                    className="px-4 py-2 bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-xs rounded-xl transition-colors disabled:opacity-50 cursor-pointer shadow-md shadow-emerald-500/20"
                   >
                     {reviewingId === u.user_id ? 'Approving...' : '✓ Approve Licence'}
                   </button>
@@ -325,7 +325,7 @@ export default function KYCManagement() {
                       setRejectUser(u);
                       setRejectReason('Uploaded photo is illegible or licence number mismatch.');
                     }}
-                    className="px-4 py-2 bg-red-500/10 hover:bg-red-500/20 text-red-400 border border-red-500/30 font-semibold text-xs rounded-xl transition-colors disabled:opacity-50 cursor-pointer"
+                    className="px-4 py-2 bg-red-50 hover:bg-red-100 text-red-600 border border-red-200 font-bold text-xs rounded-xl transition-colors disabled:opacity-50 cursor-pointer"
                   >
                     ✕ Reject
                   </button>
@@ -338,7 +338,7 @@ export default function KYCManagement() {
 
       {/* Document Inspection Modal */}
       {previewDoc && previewUser && (
-        <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 sm:p-6 animate-in fade-in">
+        <div className="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 sm:p-6 animate-in fade-in">
           <div className="bg-card border border-border rounded-2xl max-w-4xl w-full max-h-[92vh] flex flex-col shadow-2xl overflow-hidden animate-in zoom-in-95">
             {/* Header */}
             <div className="flex items-center justify-between p-4 sm:p-5 border-b border-border bg-muted/30">
@@ -394,14 +394,14 @@ export default function KYCManagement() {
                   const url = adminApi.getDocumentViewUrl(previewDoc.id);
                   window.open(url, '_blank');
                 }}
-                className="text-primary hover:underline text-xs font-semibold flex items-center gap-1 cursor-pointer"
+                className="text-primary hover:underline text-xs font-bold flex items-center gap-1 cursor-pointer"
               >
                 <span>↗ Open in New Window</span>
               </button>
             </div>
 
             {/* Preview Body */}
-            <div className="p-4 sm:p-6 overflow-auto flex-1 flex items-center justify-center bg-black/40 min-h-[350px] max-h-[62vh]">
+            <div className="p-4 sm:p-6 overflow-auto flex-1 flex items-center justify-center bg-muted/60 min-h-[350px] max-h-[62vh]">
               {previewDoc.mime_type?.includes('pdf') || previewDoc.file_name?.toLowerCase().endsWith('.pdf') ? (
                 <iframe
                   src={adminApi.getDocumentViewUrl(previewDoc.id)}
@@ -425,14 +425,14 @@ export default function KYCManagement() {
             {/* Footer */}
             <div className="p-4 border-t border-border flex flex-wrap items-center justify-between gap-3 bg-muted/20">
               <div className="flex items-center gap-2">
-                <span className="text-xs text-muted-foreground">KYC Status:</span>
+                <span className="text-xs font-bold text-muted-foreground">KYC Status:</span>
                 <span
-                  className={`px-2.5 py-0.5 rounded-full text-[11px] font-semibold ${
+                  className={`px-2.5 py-0.5 rounded-full text-[11px] font-bold ${
                     previewUser.kyc_status === 'verified'
-                      ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/30'
+                      ? 'bg-emerald-50 text-emerald-700 border border-emerald-200'
                       : previewUser.kyc_status === 'rejected'
-                      ? 'bg-red-500/10 text-red-400 border border-red-500/30'
-                      : 'bg-amber-500/10 text-amber-400 border border-amber-500/30'
+                      ? 'bg-red-50 text-red-600 border border-red-200'
+                      : 'bg-amber-50 text-amber-700 border border-amber-200'
                   }`}
                 >
                   {previewUser.kyc_status.toUpperCase()}
@@ -448,7 +448,7 @@ export default function KYCManagement() {
                       setPreviewDoc(null);
                       setPreviewUser(null);
                     }}
-                    className="px-4 py-2 bg-emerald-500 hover:bg-emerald-600 text-white font-semibold text-xs rounded-xl transition-colors disabled:opacity-50 cursor-pointer shadow-md shadow-emerald-500/20"
+                    className="px-4 py-2 bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-xs rounded-xl transition-colors disabled:opacity-50 cursor-pointer shadow-md shadow-emerald-500/20"
                   >
                     {reviewingId === previewUser.user_id ? 'Approving...' : '✓ Approve KYC'}
                   </button>
@@ -463,7 +463,7 @@ export default function KYCManagement() {
                       setPreviewDoc(null);
                       setPreviewUser(null);
                     }}
-                    className="px-4 py-2 bg-red-500/10 hover:bg-red-500/20 text-red-400 border border-red-500/30 font-semibold text-xs rounded-xl transition-colors disabled:opacity-50 cursor-pointer"
+                    className="px-4 py-2 bg-red-50 hover:bg-red-100 text-red-600 border border-red-200 font-bold text-xs rounded-xl transition-colors disabled:opacity-50 cursor-pointer"
                   >
                     ✕ Reject
                   </button>
@@ -475,7 +475,7 @@ export default function KYCManagement() {
                     setPreviewDoc(null);
                     setPreviewUser(null);
                   }}
-                  className="px-4 py-2 bg-muted text-muted-foreground hover:text-foreground rounded-xl text-xs font-semibold cursor-pointer"
+                  className="px-4 py-2 bg-muted text-muted-foreground hover:text-foreground rounded-xl text-xs font-bold cursor-pointer"
                 >
                   Close
                 </button>
@@ -487,7 +487,7 @@ export default function KYCManagement() {
 
       {/* Reject Modal */}
       {rejectUser && (
-        <div className="fixed inset-0 z-50 bg-black/75 backdrop-blur-sm flex items-center justify-center p-4">
+        <div className="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4">
           <div className="bg-card border border-border rounded-2xl max-w-md w-full p-6 shadow-2xl animate-in fade-in zoom-in-95">
             <h3 className="font-display font-black text-lg text-foreground mb-1">
               Reject KYC Application
@@ -498,7 +498,7 @@ export default function KYCManagement() {
 
             <form onSubmit={handleRejectSubmit} className="space-y-4">
               <div>
-                <label className="block text-xs font-semibold text-foreground uppercase tracking-wider mb-1.5">
+                <label className="block text-xs font-bold text-foreground uppercase tracking-wider mb-1.5">
                   Rejection Reason (Sent to Customer)
                 </label>
                 <textarea
@@ -514,14 +514,14 @@ export default function KYCManagement() {
                 <button
                   type="button"
                   onClick={() => setRejectUser(null)}
-                  className="px-4 py-2 bg-muted text-muted-foreground rounded-xl text-xs hover:text-foreground cursor-pointer"
+                  className="px-4 py-2 bg-muted text-muted-foreground font-bold rounded-xl text-xs hover:text-foreground cursor-pointer"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
                   disabled={reviewingId === rejectUser.user_id}
-                  className="px-4 py-2 bg-red-500 text-white font-semibold text-xs rounded-xl hover:bg-red-600 transition-colors disabled:opacity-50 cursor-pointer"
+                  className="px-4 py-2 bg-red-500 text-white font-bold text-xs rounded-xl hover:bg-red-600 transition-colors disabled:opacity-50 cursor-pointer"
                 >
                   Confirm Rejection
                 </button>

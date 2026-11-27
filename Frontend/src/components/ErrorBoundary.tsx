@@ -33,7 +33,7 @@ export default class ErrorBoundary extends Component<Props, State> {
       return (
         <div className="min-h-[50vh] flex items-center justify-center p-6">
           <div className="bg-card border border-border rounded-2xl p-8 max-w-md w-full text-center shadow-xl">
-            <div className="w-12 h-12 rounded-full bg-red-500/20 text-red-400 flex items-center justify-center text-xl mx-auto mb-4">
+            <div className="w-12 h-12 rounded-full bg-red-50 text-red-600 border border-red-200 flex items-center justify-center text-xl mx-auto mb-4">
               ⚠️
             </div>
             <h2 className="font-display font-bold text-lg text-foreground mb-2">
@@ -46,13 +46,13 @@ export default class ErrorBoundary extends Component<Props, State> {
               <button
                 type="button"
                 onClick={() => window.location.reload()}
-                className="px-4 py-2 bg-primary hover:bg-primary/90 text-white font-semibold text-xs rounded-xl transition-colors cursor-pointer shadow-md shadow-primary/20"
+                className="px-4 py-2 bg-primary hover:bg-primary/90 text-white font-bold text-xs rounded-xl transition-colors cursor-pointer shadow-md shadow-primary/20"
               >
                 Reload Page
               </button>
               <a
                 href="/"
-                className="px-4 py-2 bg-muted hover:bg-muted/80 text-foreground font-semibold text-xs rounded-xl transition-colors inline-block"
+                className="px-4 py-2 bg-muted hover:bg-muted/80 text-foreground font-bold text-xs rounded-xl transition-colors inline-block"
               >
                 Return to Home
               </a>

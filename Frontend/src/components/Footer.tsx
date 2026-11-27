@@ -25,7 +25,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="font-display font-semibold text-sm text-foreground mb-3">Quick Links</h4>
+            <h4 className="font-display font-bold text-sm text-foreground mb-3">Quick Links</h4>
             <ul className="space-y-2">
               {[
                 { label: 'Browse Cars', path: '/cars' },
@@ -34,7 +34,7 @@ export default function Footer() {
                 { label: 'My Bookings', path: '/profile' },
               ].map(({ label, path }) => (
                 <li key={label}>
-                  <Link to={path} className="text-muted-foreground text-sm hover:text-primary transition-colors">
+                  <Link to={path} className="text-muted-foreground text-sm font-bold hover:text-primary transition-colors">
                     {label}
                   </Link>
                 </li>
@@ -43,7 +43,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="font-display font-semibold text-sm text-foreground mb-3">Customer Support</h4>
+            <h4 className="font-display font-bold text-sm text-foreground mb-3">Customer Support</h4>
             <ul className="space-y-2">
               {[
                 { label: 'Roadside Assistance', path: '/roadside' },
@@ -52,7 +52,7 @@ export default function Footer() {
                 { label: 'Login / Register', path: '/login' },
               ].map(({ label, path }) => (
                 <li key={label}>
-                  <Link to={path} className="text-muted-foreground text-sm hover:text-primary transition-colors">
+                  <Link to={path} className="text-muted-foreground text-sm font-bold hover:text-primary transition-colors">
                     {label}
                   </Link>
                 </li>
@@ -61,14 +61,14 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="font-display font-semibold text-sm text-foreground mb-3">Contact</h4>
-            <ul className="space-y-2 text-sm text-muted-foreground">
+            <h4 className="font-display font-bold text-sm text-foreground mb-3">Contact</h4>
+            <ul className="space-y-2 text-sm font-bold text-muted-foreground">
               <li>📞 1800-123-4567</li>
               <li>📧 help@drivenow.in</li>
               <li>📍 Pune & Mumbai, Maharashtra</li>
               <li className="pt-2">
-                <span className="inline-flex items-center gap-1 text-xs text-emerald-400">
-                  <span className="w-1.5 h-1.5 bg-emerald-400 rounded-full inline-block animate-pulse" />
+                <span className="inline-flex items-center gap-1 text-xs font-bold text-emerald-600">
+                  <span className="w-1.5 h-1.5 bg-emerald-600 rounded-full inline-block animate-pulse" />
                   24/7 Roadside Assistance Active
                 </span>
               </li>

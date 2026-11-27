@@ -123,11 +123,11 @@ export default function BookingManagement() {
   }
 
   const statusColors: Record<string, string> = {
-    confirmed: 'bg-emerald-500/10 text-emerald-400 border-emerald-500/30',
-    active: 'bg-blue-500/10 text-blue-400 border-blue-500/30',
-    completed: 'bg-purple-500/10 text-purple-400 border-purple-500/30',
-    cancelled: 'bg-red-500/10 text-red-400 border-red-500/30',
-    pending: 'bg-amber-500/10 text-amber-400 border-amber-500/30',
+    confirmed: 'bg-emerald-50 text-emerald-700 border-emerald-200',
+    active: 'bg-blue-50 text-blue-700 border-blue-200',
+    completed: 'bg-purple-50 text-purple-700 border-purple-200',
+    cancelled: 'bg-red-50 text-red-600 border-red-200',
+    pending: 'bg-amber-50 text-amber-700 border-amber-200',
   };
 
   return (
@@ -145,7 +145,7 @@ export default function BookingManagement() {
 
         <button
           onClick={loadBookings}
-          className="px-3 py-1.5 bg-muted hover:bg-muted/80 text-foreground rounded-xl text-xs font-semibold transition-colors flex items-center gap-1.5 self-start sm:self-auto cursor-pointer"
+          className="px-3 py-1.5 bg-muted hover:bg-muted/80 text-foreground rounded-xl text-xs font-bold transition-colors flex items-center gap-1.5 self-start sm:self-auto cursor-pointer"
         >
           <span>↻</span>
           <span>Refresh Data</span>
@@ -157,8 +157,8 @@ export default function BookingManagement() {
         <div
           className={`p-3.5 rounded-xl border text-xs font-medium flex items-center justify-between transition-all animate-in fade-in slide-in-from-top-2 ${
             actionNotice.type === 'success'
-              ? 'bg-emerald-500/10 border-emerald-500/25 text-emerald-400'
-              : 'bg-red-500/10 border-red-500/25 text-red-400'
+              ? 'bg-emerald-50 border-emerald-200 text-emerald-700'
+              : 'bg-red-50 border-red-200 text-red-600'
           }`}
         >
           <div className="flex items-center gap-2">
@@ -180,7 +180,7 @@ export default function BookingManagement() {
           <button
             key={st}
             onClick={() => setSelectedStatus(st)}
-            className={`px-3.5 py-1.5 rounded-xl text-xs font-semibold capitalize whitespace-nowrap transition-colors cursor-pointer ${
+            className={`px-3.5 py-1.5 rounded-xl text-xs font-bold capitalize whitespace-nowrap transition-colors cursor-pointer ${
               selectedStatus === st
                 ? 'bg-primary text-white shadow-sm'
                 : 'bg-muted text-muted-foreground hover:text-foreground'
@@ -198,7 +198,7 @@ export default function BookingManagement() {
           Loading reservation schedule...
         </div>
       ) : error ? (
-        <div className="p-4 bg-red-400/10 border border-red-400/30 rounded-xl text-red-400 text-xs">
+        <div className="p-4 bg-red-50 border border-red-200 rounded-xl text-red-600 text-xs">
           {error}
         </div>
       ) : bookings.length === 0 ? (
@@ -210,7 +210,7 @@ export default function BookingManagement() {
           <div className="overflow-x-auto">
             <table className="w-full text-left border-collapse text-xs">
               <thead>
-                <tr className="border-b border-border bg-muted/50 text-muted-foreground font-semibold">
+                <tr className="border-b border-border bg-muted/50 text-muted-foreground font-bold">
                   <th className="py-3.5 px-4">Booking Ref</th>
                   <th className="py-3.5 px-4">Customer</th>
                   <th className="py-3.5 px-4">Vehicle</th>
@@ -226,12 +226,12 @@ export default function BookingManagement() {
                     <td className="py-3.5 px-4">
                       <span className="font-mono font-bold text-foreground">#{b.id.slice(0, 8)}</span>
                       {(b.with_driver || b.withDriver) && (
-                        <span className="block text-[10px] text-primary font-semibold">With Driver</span>
+                        <span className="block text-[10px] text-primary font-bold">With Driver</span>
                       )}
                     </td>
 
                     <td className="py-3.5 px-4">
-                      <p className="font-semibold text-foreground">{b.user?.name || b.userName || 'Customer'}</p>
+                      <p className="font-bold text-foreground">{b.user?.name || b.userName || 'Customer'}</p>
                       <p className="text-[10px] text-muted-foreground">{b.user?.email || b.user?.phone || b.userEmail || 'Direct User'}</p>
                     </td>
 
@@ -241,7 +241,7 @@ export default function BookingManagement() {
                     </td>
 
                     <td className="py-3.5 px-4">
-                      <p className="text-foreground">
+                      <p className="text-foreground font-bold">
                         {b.pickup_date || b.pickupDate} ➔ {b.return_date || b.returnDate || b.pickup_date || b.pickupDate} <span className="text-muted-foreground text-[11px]">({b.duration_value || b.durationValue || 1}d)</span>
                       </p>
                       <p className="text-[10px] text-muted-foreground truncate max-w-xs">
@@ -253,7 +253,7 @@ export default function BookingManagement() {
                       <span className="font-display font-bold text-foreground">
                         ₹{Number(b.total_amount ?? b.total_price ?? b.amount ?? 0).toLocaleString()}
                       </span>
-                      <span className="block text-[10px] text-muted-foreground uppercase">
+                      <span className="block text-[10px] font-bold text-muted-foreground uppercase">
                         {b.payment_method || b.paymentMethod || 'UPI'}
                       </span>
                     </td>
@@ -263,7 +263,7 @@ export default function BookingManagement() {
                         disabled={updatingId === b.id}
                         value={b.status}
                         onChange={e => handleStatusChange(b.id, e.target.value)}
-                        className={`px-2.5 py-1 rounded-full text-[11px] font-semibold border outline-none bg-card cursor-pointer ${
+                        className={`px-2.5 py-1 rounded-full text-[11px] font-bold border outline-none bg-card cursor-pointer ${
                           statusColors[b.status] || 'border-border text-foreground'
                         }`}
                       >
@@ -281,7 +281,7 @@ export default function BookingManagement() {
                             setDeleteError(null);
                             setBookingToDelete(b);
                           }}
-                          className="px-2.5 py-1 text-red-400 hover:bg-red-400/10 rounded-lg transition-colors cursor-pointer"
+                          className="px-2.5 py-1 text-red-600 font-bold hover:bg-red-50 rounded-lg transition-colors cursor-pointer"
                           title="Purge record"
                         >
                           Delete

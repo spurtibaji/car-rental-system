@@ -41,7 +41,7 @@ export default function AdminLogin() {
   }
 
   return (
-    <div className="min-h-screen bg-[#070707] flex flex-col justify-center items-center px-4 py-12 relative overflow-hidden">
+    <div className="min-h-screen bg-white flex flex-col justify-center items-center px-4 py-12 relative overflow-hidden">
       {/* Subtle Background Glow */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-primary/10 rounded-full blur-3xl pointer-events-none" />
 
@@ -52,28 +52,28 @@ export default function AdminLogin() {
             ADM
           </div>
           <div className="flex items-center justify-center gap-2 mb-1">
-            <span className="font-display font-black text-2xl text-white">Drive<span className="text-primary">Now</span></span>
-            <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-primary/20 text-primary border border-primary/30 uppercase tracking-wider">
+            <span className="font-display font-black text-2xl text-foreground">Drive<span className="text-primary">Now</span></span>
+            <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-primary/10 text-primary border border-primary/30 uppercase tracking-wider">
               Staff Only
             </span>
           </div>
-          <h1 className="text-xl font-display font-bold text-neutral-200">Management Console Login</h1>
-          <p className="text-xs text-neutral-400 mt-1">
+          <h1 className="text-xl font-display font-bold text-foreground">Management Console Login</h1>
+          <p className="text-xs text-muted-foreground mt-1">
             Restricted access for fleet supervisors & system operators
           </p>
         </div>
 
         {/* Login Box */}
-        <div className="bg-[#121212] border border-neutral-800 rounded-2xl p-6 sm:p-8 shadow-2xl">
+        <div className="bg-card border border-border rounded-2xl p-6 sm:p-8 shadow-xl">
           {error && (
-            <div className="mb-5 p-3.5 bg-red-500/10 border border-red-500/30 rounded-xl text-red-400 text-xs font-medium">
+            <div className="mb-5 p-3.5 bg-red-50 border border-red-200 rounded-xl text-red-600 text-xs font-medium">
               {error}
             </div>
           )}
 
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
-              <label className="block text-xs font-semibold text-neutral-300 uppercase tracking-wider mb-2">
+              <label className="block text-xs font-bold text-foreground uppercase tracking-wider mb-2">
                 Administrator Email
               </label>
               <input
@@ -82,12 +82,12 @@ export default function AdminLogin() {
                 value={email}
                 onChange={e => setEmail(e.target.value)}
                 placeholder="admin@drivenow.com"
-                className="w-full px-4 py-3 bg-[#1a1a1a] border border-neutral-700 rounded-xl text-sm text-white placeholder-neutral-500 outline-none focus:border-primary transition-colors font-mono"
+                className="w-full px-4 py-3 bg-muted border border-border rounded-xl text-sm text-foreground placeholder-muted-foreground outline-none focus:border-primary transition-colors font-mono"
               />
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-neutral-300 uppercase tracking-wider mb-2">
+              <label className="block text-xs font-bold text-foreground uppercase tracking-wider mb-2">
                 Access Key / Password
               </label>
               <input
@@ -96,32 +96,32 @@ export default function AdminLogin() {
                 value={password}
                 onChange={e => setPassword(e.target.value)}
                 placeholder="••••••••••••"
-                className="w-full px-4 py-3 bg-[#1a1a1a] border border-neutral-700 rounded-xl text-sm text-white placeholder-neutral-500 outline-none focus:border-primary transition-colors font-mono"
+                className="w-full px-4 py-3 bg-muted border border-border rounded-xl text-sm text-foreground placeholder-muted-foreground outline-none focus:border-primary transition-colors font-mono"
               />
             </div>
 
             <button
               type="submit"
               disabled={loading}
-              className="w-full py-3 bg-primary hover:bg-primary/90 text-white font-display font-semibold text-sm rounded-xl transition-colors disabled:opacity-50 mt-2 shadow-lg shadow-primary/20 cursor-pointer"
+              className="w-full py-3 bg-primary hover:bg-primary/90 text-white font-display font-bold text-sm rounded-xl transition-colors disabled:opacity-50 mt-2 shadow-lg shadow-primary/20 cursor-pointer"
             >
               {loading ? 'Verifying Admin Token...' : 'Authorize Console Session ➔'}
             </button>
           </form>
 
           {/* Quick Predefined Admin Credential Fill */}
-          <div className="mt-6 pt-5 border-t border-neutral-800">
+          <div className="mt-6 pt-5 border-t border-border">
             <button
               type="button"
               onClick={handleQuickFill}
-              className="w-full py-2.5 px-4 bg-neutral-900 hover:bg-neutral-800 border border-neutral-700 rounded-xl text-xs font-medium text-neutral-300 transition-colors flex items-center justify-center gap-2 cursor-pointer"
+              className="w-full py-2.5 px-4 bg-muted hover:bg-secondary border border-border rounded-xl text-xs font-bold text-foreground transition-colors flex items-center justify-center gap-2 cursor-pointer"
             >
               <span>🔑 Predefined Admin Demo Fill</span>
-              <span className="text-neutral-500 font-mono text-[11px]">(admin@drivenow.com)</span>
+              <span className="text-muted-foreground font-mono text-[11px]">(admin@drivenow.com)</span>
             </button>
           </div>
 
-          <div className="mt-5 p-3 rounded-xl bg-neutral-900/60 border border-neutral-800 text-[11px] text-neutral-500 text-center">
+          <div className="mt-5 p-3 rounded-xl bg-muted/60 border border-border text-[11px] text-muted-foreground text-center">
             🔒 Protected by RBAC session guard. Unauthorized access attempts are monitored and logged.
           </div>
         </div>

@@ -121,13 +121,13 @@ export default function CustomerManagement() {
   const kycBadge = (status: string) => {
     switch (status) {
       case 'verified':
-        return <span className="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">Verified ✓</span>;
+        return <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200">Verified ✓</span>;
       case 'pending':
-        return <span className="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-amber-500/10 text-amber-400 border border-amber-500/30">Pending ⏳</span>;
+        return <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-amber-50 text-amber-700 border border-amber-200">Pending ⏳</span>;
       case 'rejected':
-        return <span className="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-red-500/10 text-red-400 border border-red-500/30">Rejected ✕</span>;
+        return <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-red-50 text-red-600 border border-red-200">Rejected ✕</span>;
       default:
-        return <span className="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-muted text-muted-foreground border border-border">None</span>;
+        return <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-muted text-muted-foreground border border-border">None</span>;
     }
   };
 
@@ -155,7 +155,7 @@ export default function CustomerManagement() {
 
         <button
           onClick={loadCustomers}
-          className="px-3 py-1.5 bg-muted hover:bg-muted/80 text-foreground rounded-xl text-xs font-semibold transition-colors flex items-center gap-1.5 self-start sm:self-auto cursor-pointer"
+          className="px-3 py-1.5 bg-muted hover:bg-muted/80 text-foreground rounded-xl text-xs font-bold transition-colors flex items-center gap-1.5 self-start sm:self-auto cursor-pointer"
         >
           <span>↻</span>
           <span>Refresh List</span>
@@ -167,8 +167,8 @@ export default function CustomerManagement() {
         <div
           className={`p-3.5 rounded-xl border text-xs font-medium flex items-center justify-between transition-all animate-in fade-in slide-in-from-top-2 ${
             actionNotice.type === 'success'
-              ? 'bg-emerald-500/10 border-emerald-500/25 text-emerald-400'
-              : 'bg-red-500/10 border-red-500/25 text-red-400'
+              ? 'bg-emerald-50 border-emerald-200 text-emerald-700'
+              : 'bg-red-50 border-red-200 text-red-600'
           }`}
         >
           <div className="flex items-center gap-2">
@@ -201,7 +201,7 @@ export default function CustomerManagement() {
             <button
               key={st}
               onClick={() => setStatusFilter(st)}
-              className={`px-3 py-1.5 rounded-xl text-xs font-semibold capitalize transition-colors cursor-pointer ${
+              className={`px-3 py-1.5 rounded-xl text-xs font-bold capitalize transition-colors cursor-pointer ${
                 statusFilter === st
                   ? 'bg-primary text-white shadow-sm'
                   : 'bg-muted text-muted-foreground hover:text-foreground'
@@ -220,7 +220,7 @@ export default function CustomerManagement() {
           Loading customer directory...
         </div>
       ) : error ? (
-        <div className="p-4 bg-red-400/10 border border-red-400/30 rounded-xl text-red-400 text-xs">
+        <div className="p-4 bg-red-50 border border-red-200 rounded-xl text-red-600 text-xs">
           {error}
         </div>
       ) : filtered.length === 0 ? (
@@ -232,7 +232,7 @@ export default function CustomerManagement() {
           <div className="overflow-x-auto">
             <table className="w-full text-left border-collapse text-xs">
               <thead>
-                <tr className="border-b border-border bg-muted/50 text-muted-foreground font-semibold">
+                <tr className="border-b border-border bg-muted/50 text-muted-foreground font-bold">
                   <th className="py-3.5 px-4">Customer</th>
                   <th className="py-3.5 px-4">Phone</th>
                   <th className="py-3.5 px-4">KYC Status</th>
@@ -252,7 +252,7 @@ export default function CustomerManagement() {
                           {c.name ? c.name.charAt(0).toUpperCase() : 'U'}
                         </div>
                         <div>
-                          <p className="font-semibold text-foreground">{c.name || 'Unnamed'}</p>
+                          <p className="font-bold text-foreground">{c.name || 'Unnamed'}</p>
                           <p className="text-[10px] text-muted-foreground">{c.email}</p>
                         </div>
                       </div>
@@ -281,13 +281,13 @@ export default function CustomerManagement() {
                         if (totalRevs > 0 && avgRating !== null && avgRating !== undefined) {
                           return (
                             <div className="flex items-center gap-2">
-                              <div className="flex items-center gap-1 px-2.5 py-1 rounded-lg bg-amber-500/10 border border-amber-500/30">
-                                <span className="text-amber-400 font-bold text-xs">★ {Number(avgRating).toFixed(1)}</span>
+                              <div className="flex items-center gap-1 px-2.5 py-1 rounded-lg bg-amber-50 border border-amber-200">
+                                <span className="text-amber-600 font-bold text-xs">★ {Number(avgRating).toFixed(1)}</span>
                                 <span className="text-[10px] text-muted-foreground">({totalRevs})</span>
                               </div>
                               <button
                                 onClick={() => handleOpenReviews(c)}
-                                className="px-2.5 py-1 bg-primary/10 hover:bg-primary/20 text-primary border border-primary/20 rounded-lg text-[11px] font-semibold transition-colors cursor-pointer flex items-center gap-1 shadow-sm"
+                                className="px-2.5 py-1 bg-primary/10 hover:bg-primary/20 text-primary border border-primary/20 rounded-lg text-[11px] font-bold transition-colors cursor-pointer flex items-center gap-1 shadow-sm"
                                 title="View customer detailed reviews and feedback"
                               >
                                 <span>💬</span>
@@ -306,10 +306,10 @@ export default function CustomerManagement() {
 
                     <td className="py-3.5 px-4">
                       <span
-                        className={`px-2 py-0.5 rounded-full text-[10px] font-semibold ${
+                        className={`px-2 py-0.5 rounded-full text-[10px] font-bold ${
                           c.status === 'active'
-                            ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/30'
-                            : 'bg-red-500/10 text-red-400 border border-red-500/30'
+                            ? 'bg-emerald-50 text-emerald-700 border border-emerald-200'
+                            : 'bg-red-50 text-red-600 border border-red-200'
                         }`}
                       >
                         {c.status === 'active' ? 'Active' : 'Suspended'}
@@ -320,10 +320,10 @@ export default function CustomerManagement() {
                       <button
                         disabled={updatingId === c.id}
                         onClick={() => handleToggleStatus(c)}
-                        className={`px-3 py-1 rounded-lg text-xs font-semibold transition-colors cursor-pointer disabled:opacity-50 ${
+                        className={`px-3 py-1 rounded-lg text-xs font-bold transition-colors cursor-pointer disabled:opacity-50 ${
                           c.status === 'active'
-                            ? 'bg-red-500/10 text-red-400 hover:bg-red-500/20 border border-red-500/20'
-                            : 'bg-emerald-500/10 text-emerald-400 hover:bg-emerald-500/20 border border-emerald-500/20'
+                            ? 'bg-red-50 text-red-600 hover:bg-red-100 border border-red-200'
+                            : 'bg-emerald-50 text-emerald-700 hover:bg-emerald-100 border border-emerald-200'
                         }`}
                       >
                         {updatingId === c.id
@@ -344,7 +344,7 @@ export default function CustomerManagement() {
       {/* Customer Reviews Modal */}
       {selectedCustomerForReviews && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-sm animate-in fade-in"
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm animate-in fade-in"
           onClick={handleCloseReviews}
         >
           <div
@@ -362,7 +362,7 @@ export default function CustomerManagement() {
                     <h2 className="font-display font-bold text-base text-foreground">
                       {selectedCustomerForReviews.name}
                     </h2>
-                    <span className="text-[10px] px-2 py-0.5 rounded-full bg-primary/10 text-primary border border-primary/20 font-semibold">
+                    <span className="text-[10px] px-2 py-0.5 rounded-full bg-primary/10 text-primary border border-primary/20 font-bold">
                       Customer Reviews
                     </span>
                   </div>
@@ -388,13 +388,13 @@ export default function CustomerManagement() {
                   Loading verified customer reviews & ratings...
                 </div>
               ) : reviewsError ? (
-                <div className="p-4 bg-red-400/10 border border-red-400/30 rounded-xl text-red-400 text-xs">
+                <div className="p-4 bg-red-50 border border-red-200 rounded-xl text-red-600 text-xs">
                   {reviewsError}
                 </div>
               ) : !reviewsData || reviewsData.reviews.length === 0 ? (
                 <div className="py-12 text-center text-xs text-muted-foreground bg-muted/20 border border-dashed border-border rounded-xl">
                   <span className="text-3xl block mb-2">⭐</span>
-                  <p className="font-semibold text-foreground mb-1">No Reviews Submitted Yet</p>
+                  <p className="font-bold text-foreground mb-1">No Reviews Submitted Yet</p>
                   <p className="max-w-xs mx-auto">This customer has not submitted any ratings or reviews for completed rentals.</p>
                 </div>
               ) : (
@@ -402,14 +402,14 @@ export default function CustomerManagement() {
                   {/* Rating Summary Card */}
                   <div className="bg-muted/40 border border-border rounded-xl p-5 flex flex-col sm:flex-row items-center justify-between gap-6">
                     <div className="text-center sm:text-left flex flex-col items-center sm:items-start">
-                      <span className="text-[11px] font-semibold text-muted-foreground uppercase tracking-wider">Overall Customer Rating</span>
+                      <span className="text-[11px] font-bold text-muted-foreground uppercase tracking-wider">Overall Customer Rating</span>
                       <div className="flex items-baseline gap-2 mt-1">
                         <span className="font-display font-black text-4xl text-foreground">
                           {reviewsData.average_rating ? reviewsData.average_rating.toFixed(1) : '—'}
                         </span>
-                        <span className="text-sm text-muted-foreground font-semibold">/ 5.0</span>
+                        <span className="text-sm text-muted-foreground font-bold">/ 5.0</span>
                       </div>
-                      <div className="flex items-center gap-1 mt-1 text-amber-400 text-base">
+                      <div className="flex items-center gap-1 mt-1 text-amber-500 text-base">
                         {[1, 2, 3, 4, 5].map(star => (
                           <span key={star}>
                             {star <= Math.round(reviewsData.average_rating || 0) ? '★' : '☆'}
@@ -448,7 +448,7 @@ export default function CustomerManagement() {
                   <div>
                     <h3 className="font-display font-bold text-sm text-foreground mb-3 flex items-center justify-between">
                       <span>Rental Feedback & Comments</span>
-                      <span className="text-xs text-muted-foreground font-normal">
+                      <span className="text-xs text-muted-foreground font-bold">
                         {reviewsData.reviews.length} submission{reviewsData.reviews.length > 1 ? 's' : ''}
                       </span>
                     </h3>
@@ -473,7 +473,7 @@ export default function CustomerManagement() {
                                 </div>
                               )}
                               <div>
-                                <h4 className="font-semibold text-xs text-foreground">
+                                <h4 className="font-bold text-xs text-foreground">
                                   {rev.car_name || 'Vehicle'}
                                 </h4>
                                 {rev.booking_id && (
@@ -485,7 +485,7 @@ export default function CustomerManagement() {
                             </div>
 
                             <div className="flex items-center sm:flex-col sm:items-end gap-2 sm:gap-0.5">
-                              <div className="flex items-center text-amber-400 text-xs">
+                              <div className="flex items-center text-amber-500 text-xs">
                                 {[1, 2, 3, 4, 5].map(s => (
                                   <span key={s}>{s <= rev.rating ? '★' : '☆'}</span>
                                 ))}
@@ -516,7 +516,7 @@ export default function CustomerManagement() {
             <div className="p-4 border-t border-border bg-muted/20 flex justify-end">
               <button
                 onClick={handleCloseReviews}
-                className="px-4 py-2 bg-muted hover:bg-muted/80 text-foreground text-xs font-semibold rounded-xl transition-colors cursor-pointer"
+                className="px-4 py-2 bg-muted hover:bg-muted/80 text-foreground text-xs font-bold rounded-xl transition-colors cursor-pointer"
               >
                 Close
               </button>

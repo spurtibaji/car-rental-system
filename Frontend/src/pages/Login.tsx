@@ -54,14 +54,14 @@ export default function Login() {
         {/* Card Container */}
         <div className="bg-card border border-border rounded-2xl p-6 sm:p-8 shadow-xl">
           {error && (
-            <div className="mb-5 p-3.5 bg-red-400/10 border border-red-400/30 rounded-xl text-red-400 text-xs font-medium">
+            <div className="mb-5 p-3.5 bg-red-50 border border-red-200 rounded-xl text-red-600 text-xs font-medium">
               {error}
             </div>
           )}
 
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
-              <label className="block text-xs font-semibold text-foreground uppercase tracking-wider mb-2">
+              <label className="block text-xs font-bold text-foreground uppercase tracking-wider mb-2">
                 Email Address
               </label>
               <input
@@ -75,7 +75,7 @@ export default function Login() {
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-foreground uppercase tracking-wider mb-2">
+              <label className="block text-xs font-bold text-foreground uppercase tracking-wider mb-2">
                 Password
               </label>
               <input
@@ -91,7 +91,7 @@ export default function Login() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full py-3 bg-primary hover:bg-primary/90 text-white font-display font-semibold text-sm rounded-xl transition-colors disabled:opacity-50 mt-2 shadow-lg shadow-primary/20 cursor-pointer"
+              className="w-full py-3 bg-primary hover:bg-primary/90 text-white font-display font-bold text-sm rounded-xl transition-colors disabled:opacity-50 mt-2 shadow-lg shadow-primary/20 cursor-pointer"
             >
               {loading ? 'Signing In...' : 'Sign In'}
             </button>
@@ -102,7 +102,7 @@ export default function Login() {
             <button
               type="button"
               onClick={handleQuickFill}
-              className="w-full py-2.5 px-4 bg-muted hover:bg-muted/80 border border-border rounded-xl text-xs font-medium text-foreground transition-colors flex items-center justify-center gap-2 cursor-pointer"
+              className="w-full py-2.5 px-4 bg-muted hover:bg-muted/80 border border-border rounded-xl text-xs font-bold text-foreground transition-colors flex items-center justify-center gap-2 cursor-pointer"
             >
               <span>⚡ Quick-fill Demo Customer</span>
               <span className="text-muted-foreground">(rahul@email.com)</span>
@@ -112,7 +112,7 @@ export default function Login() {
           {/* Signup Link */}
           <p className="text-center text-xs text-muted-foreground mt-6">
             Don't have a customer account?{' '}
-            <Link to="/signup" className="text-primary hover:underline font-semibold">
+            <Link to="/signup" className="text-primary hover:underline font-bold">
               Create Account
             </Link>
           </p>

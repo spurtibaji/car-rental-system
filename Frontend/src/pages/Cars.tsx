@@ -45,7 +45,7 @@ export default function Cars() {
               <button
                 key={cat}
                 onClick={() => setSelectedCategory(cat)}
-                className={`px-4 py-2 rounded-xl text-xs font-semibold whitespace-nowrap transition-colors cursor-pointer ${
+                className={`px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap transition-colors cursor-pointer ${
                   selectedCategory === cat
                     ? 'bg-primary text-white shadow-md shadow-primary/20'
                     : 'bg-muted text-muted-foreground hover:text-foreground'
@@ -70,7 +70,7 @@ export default function Cars() {
         {/* Secondary Filters */}
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 pt-3 border-t border-border/60 text-xs">
           <div>
-            <label className="text-[11px] text-muted-foreground block mb-1">Fuel Type</label>
+            <label className="text-[11px] font-bold text-muted-foreground block mb-1">Fuel Type</label>
             <select
               value={fuelFilter}
               onChange={e => setFuelFilter(e.target.value)}
@@ -84,7 +84,7 @@ export default function Cars() {
           </div>
 
           <div>
-            <label className="text-[11px] text-muted-foreground block mb-1">Transmission</label>
+            <label className="text-[11px] font-bold text-muted-foreground block mb-1">Transmission</label>
             <select
               value={transmissionFilter}
               onChange={e => setTransmissionFilter(e.target.value)}
@@ -97,7 +97,7 @@ export default function Cars() {
           </div>
 
           <div>
-            <label className="text-[11px] text-muted-foreground block mb-1">Sort By</label>
+            <label className="text-[11px] font-bold text-muted-foreground block mb-1">Sort By</label>
             <select
               value={sortBy}
               onChange={e => setSortBy(e.target.value)}
@@ -119,7 +119,7 @@ export default function Cars() {
                 setSearchQuery('');
                 setSortBy('popular');
               }}
-              className="w-full py-2 bg-muted hover:bg-secondary text-muted-foreground hover:text-foreground rounded-xl text-xs font-medium transition-colors cursor-pointer"
+              className="w-full py-2 bg-muted hover:bg-secondary text-muted-foreground hover:text-foreground rounded-xl text-xs font-bold transition-colors cursor-pointer"
             >
               Reset Filters
             </button>
@@ -153,7 +153,7 @@ export default function Cars() {
               setTransmissionFilter('All');
               setSearchQuery('');
             }}
-            className="px-4 py-2 bg-primary text-white text-xs font-semibold rounded-xl hover:bg-primary/90"
+            className="px-4 py-2 bg-primary text-white text-xs font-bold rounded-xl hover:bg-primary/90"
           >
             Show All Cars
           </button>

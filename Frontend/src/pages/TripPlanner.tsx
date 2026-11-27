@@ -91,7 +91,7 @@ export default function TripPlanner() {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 py-8">
       {/* Hero Header */}
       <div className="text-center max-w-3xl mx-auto mb-10">
-        <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-primary/10 text-primary border border-primary/20 mb-3">
+        <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-primary/10 text-primary border border-primary/20 mb-3">
           ✨ Intelligent Journey Assistant
         </span>
         <h1 className="font-display font-black text-3xl sm:text-4xl text-foreground">
@@ -106,7 +106,7 @@ export default function TripPlanner() {
       <div className="bg-card border border-border rounded-2xl p-6 sm:p-8 shadow-sm mb-10">
         {/* Quick Suggestions */}
         <div className="mb-6">
-          <label className="block text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-2">
+          <label className="block text-xs font-bold text-muted-foreground uppercase tracking-wider mb-2">
             Popular Getaways
           </label>
           <div className="flex flex-wrap gap-2">
@@ -121,7 +121,7 @@ export default function TripPlanner() {
                   setBudget(q.budget);
                   setPurpose(q.purpose);
                 }}
-                className={`px-3 py-1.5 rounded-xl text-xs font-medium border transition-colors cursor-pointer ${
+                className={`px-3 py-1.5 rounded-xl text-xs font-bold border transition-colors cursor-pointer ${
                   destination === q.name
                     ? 'bg-primary text-white border-primary'
                     : 'bg-muted text-foreground border-border hover:bg-muted/80'
@@ -134,7 +134,7 @@ export default function TripPlanner() {
         </div>
 
         {error && (
-          <div className="mb-6 p-4 bg-red-400/10 border border-red-400/30 rounded-xl text-red-400 text-xs font-medium">
+          <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-xl text-red-600 text-xs font-medium">
             {error}
           </div>
         )}
@@ -142,7 +142,7 @@ export default function TripPlanner() {
         <form onSubmit={handlePlanTrip} className="space-y-4">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div>
-              <label className="block text-xs font-semibold text-foreground uppercase tracking-wider mb-1.5">
+              <label className="block text-xs font-bold text-foreground uppercase tracking-wider mb-1.5">
                 Destination *
               </label>
               <input
@@ -156,7 +156,7 @@ export default function TripPlanner() {
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-foreground uppercase tracking-wider mb-1.5">
+              <label className="block text-xs font-bold text-foreground uppercase tracking-wider mb-1.5">
                 Trip Purpose
               </label>
               <select
@@ -173,7 +173,7 @@ export default function TripPlanner() {
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-foreground uppercase tracking-wider mb-1.5">
+              <label className="block text-xs font-bold text-foreground uppercase tracking-wider mb-1.5">
                 Target Budget (₹)
               </label>
               <input
@@ -189,7 +189,7 @@ export default function TripPlanner() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div>
-              <label className="block text-xs font-semibold text-foreground uppercase tracking-wider mb-1.5">
+              <label className="block text-xs font-bold text-foreground uppercase tracking-wider mb-1.5">
                 Passengers
               </label>
               <select
@@ -204,7 +204,7 @@ export default function TripPlanner() {
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-foreground uppercase tracking-wider mb-1.5">
+              <label className="block text-xs font-bold text-foreground uppercase tracking-wider mb-1.5">
                 Duration (Days)
               </label>
               <input
@@ -218,7 +218,7 @@ export default function TripPlanner() {
             </div>
 
             <div className="flex items-center pt-6">
-              <label className="flex items-center gap-2 text-xs font-semibold text-foreground cursor-pointer">
+              <label className="flex items-center gap-2 text-xs font-bold text-foreground cursor-pointer">
                 <input
                   type="checkbox"
                   checked={needDriver}
@@ -233,7 +233,7 @@ export default function TripPlanner() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full py-3 bg-primary hover:bg-primary/90 text-white font-display font-semibold text-sm rounded-xl transition-colors disabled:opacity-50 cursor-pointer shadow-lg shadow-primary/20"
+            className="w-full py-3 bg-primary hover:bg-primary/90 text-white font-display font-bold text-sm rounded-xl transition-colors disabled:opacity-50 cursor-pointer shadow-lg shadow-primary/20"
           >
             {loading ? 'Analyzing Route & Calculating Fleet...' : 'Generate Recommendations ➔'}
           </button>
@@ -246,22 +246,22 @@ export default function TripPlanner() {
           {/* Trip Summary Card */}
           <div className="bg-card border border-border rounded-2xl p-6 flex flex-wrap items-center justify-between gap-4">
             <div>
-              <span className="text-xs text-muted-foreground uppercase tracking-wider font-semibold">Itinerary Analysis</span>
+              <span className="text-xs text-muted-foreground uppercase tracking-wider font-bold">Itinerary Analysis</span>
               <h2 className="font-display font-black text-2xl text-foreground mt-0.5">
                 Trip to {results.destination}
               </h2>
             </div>
-            <div className="flex items-center gap-6 text-xs text-muted-foreground">
+            <div className="flex items-center gap-6 text-xs text-muted-foreground font-bold">
               <div>
-                <span className="block font-semibold text-foreground">Estimated Round Trip</span>
+                <span className="block font-bold text-foreground">Estimated Round Trip</span>
                 <span>{results.distance_round_trip_km} km</span>
               </div>
               <div>
-                <span className="block font-semibold text-foreground">Terrain Profile</span>
+                <span className="block font-bold text-foreground">Terrain Profile</span>
                 <span className="capitalize">{results.terrain}</span>
               </div>
               <div>
-                <span className="block font-semibold text-foreground">Travelers</span>
+                <span className="block font-bold text-foreground">Travelers</span>
                 <span>{results.passengers} Guests · {results.days} Days</span>
               </div>
             </div>
@@ -293,7 +293,7 @@ export default function TripPlanner() {
 
                   <div className="flex items-center justify-between mb-2">
                     <h3 className="font-display font-bold text-lg text-foreground">{item.car.name}</h3>
-                    <span className="text-xs text-muted-foreground capitalize font-medium">{item.car.type}</span>
+                    <span className="text-xs text-muted-foreground capitalize font-bold">{item.car.type}</span>
                   </div>
 
                   <p className="text-xs text-muted-foreground mb-4">
@@ -304,7 +304,7 @@ export default function TripPlanner() {
                   <div className="space-y-1 mb-4">
                     {item.match_reasons.map((reason, rIdx) => (
                       <div key={rIdx} className="flex items-center gap-1.5 text-xs text-muted-foreground">
-                        <span className="text-emerald-400">✓</span>
+                        <span className="text-emerald-600">✓</span>
                         <span>{reason}</span>
                       </div>
                     ))}
@@ -312,19 +312,19 @@ export default function TripPlanner() {
 
                   {/* Cost breakdown */}
                   <div className="bg-muted/50 rounded-xl p-3 space-y-1.5 text-xs mb-6 border border-border/50">
-                    <div className="flex justify-between text-muted-foreground">
+                    <div className="flex justify-between font-bold text-muted-foreground">
                       <span>Vehicle Rental ({results.days}d):</span>
-                      <span className="font-medium text-foreground">₹{item.rental_cost.toLocaleString()}</span>
+                      <span className="font-bold text-foreground">₹{item.rental_cost.toLocaleString()}</span>
                     </div>
                     {item.driver_cost > 0 && (
-                      <div className="flex justify-between text-muted-foreground">
+                      <div className="flex justify-between font-bold text-muted-foreground">
                         <span>Chauffeur Allowance:</span>
-                        <span className="font-medium text-foreground">₹{item.driver_cost.toLocaleString()}</span>
+                        <span className="font-bold text-foreground">₹{item.driver_cost.toLocaleString()}</span>
                       </div>
                     )}
-                    <div className="flex justify-between text-muted-foreground">
+                    <div className="flex justify-between font-bold text-muted-foreground">
                       <span>Estimated Fuel (~{results.distance_round_trip_km}km):</span>
-                      <span className="font-medium text-foreground">₹{item.fuel_cost.toLocaleString()}</span>
+                      <span className="font-bold text-foreground">₹{item.fuel_cost.toLocaleString()}</span>
                     </div>
                     <div className="flex justify-between pt-2 border-t border-border font-bold text-foreground">
                       <span>Total Estimated Journey:</span>
@@ -337,7 +337,7 @@ export default function TripPlanner() {
 
                 <button
                   onClick={() => handleSelectCar(item)}
-                  className={`w-full py-2.5 rounded-xl font-display font-semibold text-xs transition-colors cursor-pointer ${
+                  className={`w-full py-2.5 rounded-xl font-display font-bold text-xs transition-colors cursor-pointer ${
                     item.is_best_match
                       ? 'bg-primary hover:bg-primary/90 text-white shadow-md shadow-primary/20'
                       : 'bg-muted hover:bg-muted/80 text-foreground border border-border'
